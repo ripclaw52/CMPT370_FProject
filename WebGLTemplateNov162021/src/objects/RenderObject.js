@@ -109,7 +109,7 @@ class RenderObject {
         ambientVal: this.gl.getUniformLocation(shaderProgram, 'ambientVal'),
         specularVal: this.gl.getUniformLocation(shaderProgram, 'specularVal'),
         nVal: this.gl.getUniformLocation(shaderProgram, 'nVal'),
-        //alphaVal: this.gl.getUniformLocation(shaderProgram, 'alphaVal'),
+        alphaVal: this.gl.getUniformLocation(shaderProgram, 'alphaVal'),
         cameraPosition: this.gl.getUniformLocation(shaderProgram, 'uCameraPosition'),
         numLights: this.gl.getUniformLocation(shaderProgram, 'numLights'),
         lightPositions: this.gl.getUniformLocation(shaderProgram, 'uLightPositions'),

@@ -62,16 +62,15 @@ async function main() {
         uniform mat4 uViewMatrix;
         uniform mat4 uModelMatrix;
 
-        out vec3 oNormal;
         out vec2 oUV;
+        out vec3 oFragPosition;
+        out vec3 oNormal;
 
         void main() {
-            // Simply use this normal so no error is thrown
-            oNormal = aNormal;
-
-            // Postion of the fragment in world space
             gl_Position = uProjectionMatrix * uViewMatrix * uModelMatrix * vec4(aPosition, 1.0);
             oUV = aUV;
+            oFragPosition = (uModelMatrix * vec4(aPosition, 1.0)).xyz;
+            oNormal = normalize((uModelMatrix * vec4(aNormal, 1.0)).xyz);
         }
         `;
 
@@ -79,25 +78,34 @@ async function main() {
         `#version 300 es
         #define MAX_LIGHTS 20
         precision highp float;
-        
-        in vec2 oUV;
-        
+
         struct PointLight {
             vec3 position;
             vec3 colour;
             float strength;
         };
+        
+        in vec2 oUV;
 
         uniform PointLight mainLight;
+        
         uniform vec3 diffuseVal;
         uniform vec3 ambientVal;
         uniform vec3 specularVal;
         uniform float nVal;
         uniform float alphaVal;
+        
+        uniform int samplerExists;
+        uniform sampler2D uTexture;
 
         out vec4 fragColor;
         void main() {
-            fragColor = vec4(ambientVal + diffuseVal + specularVal, alphaVal);
+            if (samplerExists === 1) {
+                vec3.textureColour = texture(uTexture, oUV).rgb;
+                fragColor = vec4(diffuseVal * textureColour, alphaVal);
+            } else {
+                fragColor = vec4(diffuseVal, alphaVal);
+            }
         }
         `;
 
@@ -273,7 +281,7 @@ function drawScene(gl, deltaTime, state) {
             gl.uniform3fv(object.programInfo.uniformLocations.ambientVal, object.material.ambient);
             gl.uniform3fv(object.programInfo.uniformLocations.specularVal, object.material.specular);
             gl.uniform1f(object.programInfo.uniformLocations.nVal, object.material.n);
-            gl.uniform1f(object.programInfo.uniformLocations.alphaVal, object.material.alpha);
+            //gl.uniform1f(object.programInfo.uniformLocations.alphaVal, object.material.alpha);
 
             let mainLight = state.pointLights[0];
             gl.uniform3fv(gl.getUniformLocation(object.programInfo.program, 'mainLight.position'), state.mainLight.position);
