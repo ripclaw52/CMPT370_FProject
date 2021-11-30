@@ -67,9 +67,10 @@ class RenderObject {
     const positions = new Float32Array(this.model.vertices);
     const normals = new Float32Array(this.model.normals);
     const indices = new Uint16Array(this.model.triangles);
+    const textureCoords = new Float32Array(this.model.uvs);
 
-    //const textureCoords = new Float32Array(this.model.uvs);
     var vertexArrayObject = this.gl.createVertexArray();
+
     this.gl.bindVertexArray(vertexArrayObject);
 
     this.buffers = {
@@ -77,7 +78,7 @@ class RenderObject {
       attributes: {
         position: initPositionAttribute(this.gl, this.programInfo, positions),
         normal: initNormalAttribute(this.gl, this.programInfo, normals),
-        // uv: initTextureCoords(this.gl, this.programInfo, textureCoords),
+        uv: initTextureCoords(this.gl, this.programInfo, textureCoords),
       },
       indicies: initIndexBuffer(this.gl, indices),
       numVertices: indices.length
@@ -97,24 +98,25 @@ class RenderObject {
       attribLocations: {
         vertexPosition: this.gl.getAttribLocation(shaderProgram, 'aPosition'),
         vertexNormal: this.gl.getAttribLocation(shaderProgram, 'aNormal'),
-        // vertexUV: this.gl.getAttribLocation(shaderProgram, 'aUV'),
+        vertexUV: this.gl.getAttribLocation(shaderProgram, 'aUV'),
       },
       uniformLocations: {
         projection: this.gl.getUniformLocation(shaderProgram, 'uProjectionMatrix'),
         view: this.gl.getUniformLocation(shaderProgram, 'uViewMatrix'),
         model: this.gl.getUniformLocation(shaderProgram, 'uModelMatrix'),
-        // normalMatrix: this.gl.getUniformLocation(shaderProgram, 'normalMatrix'),
+        normalMatrix: this.gl.getUniformLocation(shaderProgram, 'normalMatrix'),
         diffuseVal: this.gl.getUniformLocation(shaderProgram, 'diffuseVal'),
-        // ambientVal: this.gl.getUniformLocation(shaderProgram, 'ambientVal'),
-        // specularVal: this.gl.getUniformLocation(shaderProgram, 'specularVal'),
-        // nVal: this.gl.getUniformLocation(shaderProgram, 'nVal'),
-        // cameraPosition: this.gl.getUniformLocation(shaderProgram, 'uCameraPosition'),
-        // numLights: this.gl.getUniformLocation(shaderProgram, 'numLights'),
-        // lightPositions: this.gl.getUniformLocation(shaderProgram, 'uLightPositions'),
-        // lightColours: this.gl.getUniformLocation(shaderProgram, 'uLightColours'),
-        // lightStrengths: this.gl.getUniformLocation(shaderProgram, 'uLightStrengths'),
-        // sampler: this.gl.getUniformLocation(shaderProgram, 'uTexture'),
-        // samplerExists: this.gl.getUniformLocation(shaderProgram, "samplerExists")
+        ambientVal: this.gl.getUniformLocation(shaderProgram, 'ambientVal'),
+        specularVal: this.gl.getUniformLocation(shaderProgram, 'specularVal'),
+        nVal: this.gl.getUniformLocation(shaderProgram, 'nVal'),
+        //alphaVal: this.gl.getUniformLocation(shaderProgram, 'alphaVal'),
+        cameraPosition: this.gl.getUniformLocation(shaderProgram, 'uCameraPosition'),
+        numLights: this.gl.getUniformLocation(shaderProgram, 'numLights'),
+        lightPositions: this.gl.getUniformLocation(shaderProgram, 'uLightPositions'),
+        lightColours: this.gl.getUniformLocation(shaderProgram, 'uLightColours'),
+        lightStrengths: this.gl.getUniformLocation(shaderProgram, 'uLightStrengths'),
+        sampler: this.gl.getUniformLocation(shaderProgram, 'uTexture'),
+        samplerExists: this.gl.getUniformLocation(shaderProgram, "samplerExists")
       },
     };
     shaderValuesErrorCheck(programInfo);
