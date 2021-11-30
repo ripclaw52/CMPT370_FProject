@@ -90,21 +90,21 @@ async function main() {
         uniform PointLight mainLight;
         
         uniform vec3 diffuseVal;
-        uniform vec3 ambientVal;
-        uniform vec3 specularVal;
-        uniform float nVal;
-        uniform float alphaVal;
+        //uniform vec3 ambientVal;
+        //uniform vec3 specularVal;
+        //uniform float nVal;
+        //uniform float alphaVal;
         
         uniform int samplerExists;
         uniform sampler2D uTexture;
 
         out vec4 fragColor;
         void main() {
-            if (samplerExists === 1) {
-                vec3.textureColour = texture(uTexture, oUV).rgb;
-                fragColor = vec4(diffuseVal * textureColour, alphaVal);
+            if (samplerExists == 1) {
+                vec3 textureColour = texture(uTexture, oUV).rgb;
+                fragColor = vec4(diffuseVal * textureColour, 1.0);
             } else {
-                fragColor = vec4(diffuseVal, alphaVal);
+                fragColor = vec4(diffuseVal, 1.0);
             }
         }
         `;
