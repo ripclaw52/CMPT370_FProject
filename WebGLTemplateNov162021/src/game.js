@@ -11,27 +11,39 @@ class Game {
     }
 
     // example - create a collider on our object with various fields we might need (you will likely need to add/remove/edit how this works)
-    // createSphereCollider(object, radius, onCollide = null) {
-    //     object.collider = {
-    //         type: "SPHERE",
-    //         radius: radius,
-    //         onCollide: onCollide ? onCollide : (otherObject) => {
-    //             console.log(`Collided with ${otherObject.name}`);
-    //         }
-    //     };
-    //     this.collidableObjects.push(object);
-    // }
+    createSphereCollider(object, radius, onCollide = null) {
+        object.stop=0;
+        object.collider = {
+            type: "SPHERE",
+            radius: radius,
+            onCollide: onCollide ? onCollide : (otherObject) => {
+                //console.log(`Collided with ${otherObject.name}`);
+                object.stop=1;
+            }
+        };
+        this.collidableObjects.push(object);
+    }
 
     // example - function to check if an object is colliding with collidable objects
-    // checkCollision(object) {
-    //     // loop over all the other collidable objects 
-    //     this.collidableObjects.forEach(otherObject => {
-    //         // do a check to see if we have collided, if we have we can call object.onCollide(otherObject) which will
-    //         // call the onCollide we define for that specific object. This way we can handle collisions identically for all
-    //         // objects that can collide but they can do different things (ie. player colliding vs projectile colliding)
-    //         // use the modeling transformation for object and otherObject to transform position into current location
-    //     });
-    // }
+    checkCollision(object) {
+        // loop over all the other collidable objects 
+        this.collidableObjects.forEach(otherObject => {
+            // do a check to see if we have collided, if we have we can call object.onCollide(otherObject) which will
+            // call the onCollide we define for that specific object. This way we can handle collisions identically for all
+            // objects that can collide but they can do different things (ie. player colliding vs projectile colliding)
+            // use the modeling transformation for object and otherObject to transform position into current location
+            var objectMatrix = vec3.create();
+            var otherMatrix = vec3.create();
+            vec3.transformMat4(objectMatrix, object.model.position, object.modelMatrix);
+            vec3.transformMat4(otherMatrix, otherObject.model.position, otherObject.modelMatrix);
+
+            var distance = vec3.distance(objectMatrix, otherMatrix);
+            if ((otherObject.name != object.name) && (distance < (object.collider.radius + otherObject.collider.radius))) {
+                object.stop = otherMatrix[0]-objectMatrix[0];
+                return;
+            }
+        });
+    }
 
     // runs once on startup after the scene loads the objects
     async onStart() {
@@ -43,9 +55,11 @@ class Game {
         }, false);
 
         // example - set an object in onStart before starting our render loop!
-        this.player = getObject(this.state, "tank");
-        const otherObject = getObject(this.state, "enemyTank"); // we wont save this as instance var since we dont plan on using it in update
+        this.player = getObject(this.state, "myCube");
+        const npcObject = getObject(this.state, "myNpc"); // we wont save this as instance var since we dont plan on using it in update
 
+        this.createSphereCollider(this.player, 0.5);
+        this.createSphereCollider(npcObject, 0.5);
         // example - create sphere colliders on our two objects as an example, we give 2 objects colliders otherwise
         // no collision can happen
         // this.createSphereCollider(this.cube, 0.5, (otherObject) => {
@@ -59,13 +73,25 @@ class Game {
 
             switch (e.key) {
                 case "a":
-                    this.player.translate(vec3.fromValues(0.5, 0, 0));
+                    if (this.player.stop <= 0) {
+                        this.player.translate(vec3.fromValues(0.1, 0, 0));
+                    }
                     break;
-
                 case "d":
-                    this.player.translate(vec3.fromValues(-0.5, 0, 0));
+                    if (this.player.stop <= 0) {
+                        this.player.translate(vec3.fromValues(-0.1, 0, 0));
+                    }
                     break;
-
+                case "s":
+                    if (this.player.stop <= 0) {
+                        this.player.translate(vec3.fromValues(0, 0, -0.1));
+                    }
+                    break;
+                case "w":
+                    if (this.player.stop <= 0) {
+                        this.player.translate(vec3.fromValues(0, 0, 0.1));
+                    }
+                    break;
                 default:
                     break;
             }
@@ -138,6 +164,6 @@ class Game {
 
 
         // example - call our collision check method on our cube
-        // this.checkCollision(this.cube);
+        this.checkCollision(this.player);
     }
 }
