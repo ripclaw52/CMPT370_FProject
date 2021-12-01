@@ -80,6 +80,7 @@ class Game {
                     //console.log(this.player.stop);
                     if (this.player.stop[0] <= 0) {
                         this.player.translate(vec3.fromValues(0.25, 0, 0));
+                        // also change camera position
                     }
                     break;
                 case "d":

@@ -1,4 +1,5 @@
-var state = {};
+var state = {
+};
 var game;
 var sceneFile = "scene.json"; // can change this to be the name of your scene
 
@@ -121,7 +122,7 @@ async function main() {
             vec3 viewDirection = normalize(oCameraPosition - oFragPosition);
             vec3 H = normalize(viewDirection + lightDirection);
 
-            vec3 ambient = ambientVal * pointLight[0].colour * pointLight[0].strength;
+            vec3 ambient = ambientVal * pointLight[0].colour;
             vec3 diffuse = pointLight[0].colour * (max(dot(normal,lightDirection),0.0));
             vec3 specular = pointLight[0].colour * specularVal * pow(max(dot(H,normal),0.0),nVal);
             
@@ -131,9 +132,8 @@ async function main() {
             } else {
                 diffuse = diffuseVal;
             }
-            
             fragColor = vec4(ambient + diffuse + specular, alphaVal);
-            //fragColor = vec4(specular, alphaVal);
+            //fragColor = vec4(diffuse, alphaVal);
             //fragColor = vec4(ambient+specular, 1.0);
         }
         `;
@@ -157,6 +157,18 @@ async function main() {
     };
 
     state.numLights = state.pointLights.length;
+    state.cameraKey = 1;
+    state.camera = [{
+        name: "topCamera",
+        position: vec3.fromValues(1.0, 7.0, 1.0),
+        front: vec3.fromValues(1.0, 0.0, 1.0),
+        up: vec3.fromValues(0.0, 0.0, 1.0),
+    }, {
+        name: "povCamera",
+        position : vec3.fromValues(0.0, 5.0, -15.0),
+        front: vec3.fromValues(0.0, 3.5, 1.0),
+        up: vec3.fromValues(0.0, 0.0, 1.0),
+    }];
 
     const now = new Date();
     for (let i = 0; i < state.loadObjects.length; i++) {
@@ -246,8 +258,8 @@ function drawScene(gl, deltaTime, state) {
         let bCentroidFour = vec4.fromValues(b.centroid[0], b.centroid[1], b.centroid[2], 1.0);
         vec4.transformMat4(bCentroidFour, bCentroidFour, b.modelMatrix);
 
-        return vec3.distance(state.camera.position, vec3.fromValues(aCentroidFour[0], aCentroidFour[1], aCentroidFour[2]))
-            >= vec3.distance(state.camera.position, vec3.fromValues(bCentroidFour[0], bCentroidFour[1], bCentroidFour[2])) ? -1 : 1;
+        return vec3.distance(state.camera[state.cameraKey].position, vec3.fromValues(aCentroidFour[0], aCentroidFour[1], aCentroidFour[2]))
+            >= vec3.distance(state.camera[state.cameraKey].position, vec3.fromValues(bCentroidFour[0], bCentroidFour[1], bCentroidFour[2])) ? -1 : 1;
     });
 
     // iterate over each object and render them
@@ -267,16 +279,17 @@ function drawScene(gl, deltaTime, state) {
 
             // View Matrix & Camera ....
             let viewMatrix = mat4.create();
-            let camFront = vec3.fromValues(0, 0, 0);
-            vec3.add(camFront, state.camera.position, state.camera.front);
+            //let camFront = state.camera[state.cameraKey].front; //vec3.fromValues(0, 0, 0);
+            //vec3.add(camFront, state.camera[state.cameraKey].position, state.camera[state.cameraKey].front);
             mat4.lookAt(
                 viewMatrix,
-                state.camera.position,
-                camFront,
-                state.camera.up,
+                state.camera[state.cameraKey].position,
+                //camFront,
+                state.camera[state.cameraKey].front,
+                state.camera[state.cameraKey].up,
             );
             gl.uniformMatrix4fv(object.programInfo.uniformLocations.view, false, viewMatrix);
-            gl.uniform3fv(object.programInfo.uniformLocations.cameraPosition, state.camera.position);
+            gl.uniform3fv(object.programInfo.uniformLocations.cameraPosition, state.camera[state.cameraKey].position);
             state.viewMatrix = viewMatrix;
 
             // Model Matrix ....
@@ -325,18 +338,18 @@ function drawScene(gl, deltaTime, state) {
             gl.uniform3fv(gl.getUniformLocation(object.programInfo.program, 'mainLight.colour'), mainLight.colour);
             gl.uniform1f(gl.getUniformLocation(object.programInfo.program, 'mainLight.strength'), mainLight.strength);
             */
-
+            
             gl.uniform1i(object.programInfo.uniformLocations.numLights, state.numLights);
             if (state.pointLights.length > 0) {
                 for (let i = 0; i < state.pointLights.length; i++) {
-                    gl.uniform3fv(gl.getUniformLocation(object.programInfo.program, 'pointLights[' + i + '].position'), state.pointLights[i].position);
-                    gl.uniform3fv(gl.getUniformLocation(object.programInfo.program, 'pointLights[' + i + '].colour'), state.pointLights[i].colour);
-                    gl.uniform1f(gl.getUniformLocation(object.programInfo.program, 'pointLights[' + i + '].strength'), state.pointLights[i].strength);
-                    gl.uniform1f(gl.getUniformLocation(object.programInfo.program, 'pointLights[' + i + '].linear'), state.pointLights[i].linear);
-                    gl.uniform1f(gl.getUniformLocation(object.programInfo.program, 'pointLights[' + i + '].quadratic'), state.pointLights[i].quadratic);
+                    gl.uniform3fv(gl.getUniformLocation(object.programInfo.program, 'pointLight[' + i + '].position'), state.pointLights[i].position);
+                    gl.uniform3fv(gl.getUniformLocation(object.programInfo.program, 'pointLight[' + i + '].colour'), state.pointLights[i].colour);
+                    gl.uniform1f(gl.getUniformLocation(object.programInfo.program, 'pointLight[' + i + '].strength'), state.pointLights[i].strength);
+                    gl.uniform1f(gl.getUniformLocation(object.programInfo.program, 'pointLight[' + i + '].linear'), state.pointLights[i].linear);
+                    gl.uniform1f(gl.getUniformLocation(object.programInfo.program, 'pointLight[' + i + '].quadratic'), state.pointLights[i].quadratic);
                 }
             }
-
+            //console.log(state.pointLights[0]);
 
             {
                 // Bind the buffer we want to draw
