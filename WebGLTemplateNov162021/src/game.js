@@ -12,13 +12,13 @@ class Game {
 
     // example - create a collider on our object with various fields we might need (you will likely need to add/remove/edit how this works)
     createSphereCollider(object, radius, onCollide = null) {
-        object.stop=0;
+        object.stop=vec3.fromValues(0,0,0);
         object.collider = {
             type: "SPHERE",
             radius: radius,
             onCollide: onCollide ? onCollide : (otherObject) => {
                 //console.log(`Collided with ${otherObject.name}`);
-                object.stop=1;
+                //object.stop=vec3.fromValues(1,1,1);
             }
         };
         this.collidableObjects.push(object);
@@ -26,6 +26,7 @@ class Game {
 
     // example - function to check if an object is colliding with collidable objects
     checkCollision(object) {
+        object.stop=vec3.fromValues(0,0,0);
         // loop over all the other collidable objects 
         this.collidableObjects.forEach(otherObject => {
             // do a check to see if we have collided, if we have we can call object.onCollide(otherObject) which will
@@ -39,7 +40,10 @@ class Game {
 
             var distance = vec3.distance(objectMatrix, otherMatrix);
             if ((otherObject.name != object.name) && (distance < (object.collider.radius + otherObject.collider.radius))) {
-                object.stop = otherMatrix[0]-objectMatrix[0];
+                //object.stop = otherMatrix[2]-objectMatrix[2];
+                //object.stop = otherMatrix[0]-objectMatrix[0];
+                vec3.subtract(object.stop, otherMatrix, objectMatrix);
+                console.log(object.stop);
                 return;
             }
         });
@@ -56,7 +60,7 @@ class Game {
 
         // example - set an object in onStart before starting our render loop!
         this.player = getObject(this.state, "myCube");
-        const npcObject = getObject(this.state, "myNpc"); // we wont save this as instance var since we dont plan on using it in update
+        const npcObject = getObject(this.state, "myNPC"); // we wont save this as instance var since we dont plan on using it in update
 
         this.createSphereCollider(this.player, 0.5);
         this.createSphereCollider(npcObject, 0.5);
@@ -73,23 +77,27 @@ class Game {
 
             switch (e.key) {
                 case "a":
-                    if (this.player.stop <= 0) {
-                        this.player.translate(vec3.fromValues(0.1, 0, 0));
+                    console.log(this.player.stop);
+                    if (this.player.stop[0] <= 0) {
+                        this.player.translate(vec3.fromValues(0.5, 0, 0));
                     }
                     break;
                 case "d":
-                    if (this.player.stop <= 0) {
-                        this.player.translate(vec3.fromValues(-0.1, 0, 0));
+                    console.log(this.player.stop);
+                    if (this.player.stop[0] >= 0) {
+                        this.player.translate(vec3.fromValues(-0.5, 0, 0));
                     }
                     break;
                 case "s":
-                    if (this.player.stop <= 0) {
-                        this.player.translate(vec3.fromValues(0, 0, -0.1));
+                    console.log(this.player.stop);
+                    if (this.player.stop[2] >= 0) {
+                        this.player.translate(vec3.fromValues(0, 0, -0.5));
                     }
                     break;
                 case "w":
-                    if (this.player.stop <= 0) {
-                        this.player.translate(vec3.fromValues(0, 0, 0.1));
+                    console.log(this.player.stop);
+                    if (this.player.stop[2] <= 0) {
+                        this.player.translate(vec3.fromValues(0, 0, 0.5));
                     }
                     break;
                 default:
