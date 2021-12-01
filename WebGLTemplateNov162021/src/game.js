@@ -62,8 +62,8 @@ class Game {
         this.player = getObject(this.state, "myCube");
         const npcObject = getObject(this.state, "myNPC"); // we wont save this as instance var since we dont plan on using it in update
 
-        this.createSphereCollider(this.player, 0.5);
-        this.createSphereCollider(npcObject, 0.5);
+        this.createSphereCollider(this.player, 0.25);
+        this.createSphereCollider(npcObject, 0.25);
         // example - create sphere colliders on our two objects as an example, we give 2 objects colliders otherwise
         // no collision can happen
         // this.createSphereCollider(this.cube, 0.5, (otherObject) => {
@@ -77,27 +77,27 @@ class Game {
 
             switch (e.key) {
                 case "a":
-                    console.log(this.player.stop);
+                    //console.log(this.player.stop);
                     if (this.player.stop[0] <= 0) {
-                        this.player.translate(vec3.fromValues(0.5, 0, 0));
+                        this.player.translate(vec3.fromValues(0.25, 0, 0));
                     }
                     break;
                 case "d":
-                    console.log(this.player.stop);
+                    //console.log(this.player.stop);
                     if (this.player.stop[0] >= 0) {
-                        this.player.translate(vec3.fromValues(-0.5, 0, 0));
+                        this.player.translate(vec3.fromValues(-0.25, 0, 0));
                     }
                     break;
                 case "s":
-                    console.log(this.player.stop);
+                    //console.log(this.player.stop);
                     if (this.player.stop[2] >= 0) {
-                        this.player.translate(vec3.fromValues(0, 0, -0.5));
+                        this.player.translate(vec3.fromValues(0, 0, -0.25));
                     }
                     break;
                 case "w":
-                    console.log(this.player.stop);
+                    //console.log(this.player.stop);
                     if (this.player.stop[2] <= 0) {
-                        this.player.translate(vec3.fromValues(0, 0, 0.5));
+                        this.player.translate(vec3.fromValues(0, 0, 0.25));
                     }
                     break;
                 default:
