@@ -284,9 +284,9 @@ function drawScene(gl, deltaTime, state) {
             //gl.uniform1f(object.programInfo.uniformLocations.alphaVal, object.material.alpha);
 
             let mainLight = state.pointLights[0];
-            gl.uniform3fv(gl.getUniformLocation(object.programInfo.program, 'mainLight.position'), state.mainLight.position);
-            gl.uniform3fv(gl.getUniformLocation(object.programInfo.program, 'mainLight.colour'), state.mainLight.colour);
-            gl.uniform1f(gl.getUniformLocation(object.programInfo.program, 'mainLight.strength'), state.mainLight.strength);
+            gl.uniform3fv(gl.getUniformLocation(object.programInfo.program, 'mainLight.position'), mainLight.position);
+            gl.uniform3fv(gl.getUniformLocation(object.programInfo.program, 'mainLight.colour'), mainLight.colour);
+            gl.uniform1f(gl.getUniformLocation(object.programInfo.program, 'mainLight.strength'), mainLight.strength);
 
             gl.uniform1i(object.programInfo.uniformLocations.numLights, state.numLights);
 
