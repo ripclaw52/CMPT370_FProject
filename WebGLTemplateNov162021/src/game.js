@@ -14,11 +14,7 @@ class Game {
         //console.log("Add doom music");
         const music = document.getElementById("music");
         console.log(music);
-        //const music = new Audio('./audio/Personal_Jesus.mp3');
-        //music.play();
         music.loop =true;
-        //music.playbackRate = 2;
-        //music.pause();
     }
 
     // example - create a collider on our object with various fields we might need (you will likely need to add/remove/edit how this works)
@@ -84,6 +80,7 @@ class Game {
         // this.createSphereCollider(otherCube, 0.5);
 
         // example - setting up a key press event to move an object in the scene
+
         document.addEventListener("keypress", (e) => {
             e.preventDefault();
 
@@ -97,10 +94,11 @@ class Game {
                     }
                     break;
                 case "m":
-                    music.play();
-                    break;
-                case "n":
-                    music.pause();
+                    if (music.paused) {
+                        music.play();
+                    } else {
+                        music.pause();
+                    }
                     break;
                 case "a":
                     //console.log(this.player.stop);
