@@ -157,7 +157,7 @@ async function main() {
     };
 
     state.numLights = state.pointLights.length;
-    state.cameraKey = 1;
+    state.cameraKey = 0;
     state.camera = [{
         name: "topCamera",
         position: vec3.fromValues(1.0, 7.0, 1.0),
@@ -165,9 +165,9 @@ async function main() {
         up: vec3.fromValues(0.0, 0.0, 1.0),
     }, {
         name: "povCamera",
-        position : vec3.fromValues(0.0, 5.0, -15.0),
-        front: vec3.fromValues(0.0, 3.5, 1.0),
-        up: vec3.fromValues(0.0, 0.0, 1.0),
+        position: vec3.fromValues(3.75, 0.75, -3.75),
+        front: vec3.fromValues(0.0, 0.0, 2.0),
+        up: vec3.fromValues(0.0, 1.0, 0.0),
     }];
 
     const now = new Date();

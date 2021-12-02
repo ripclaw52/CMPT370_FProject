@@ -10,6 +10,17 @@ class Game {
         console.log("Custom method!");
     }
 
+    customMusic() {
+        //console.log("Add doom music");
+        const music = document.getElementById("music");
+        console.log(music);
+        //const music = new Audio('./audio/Personal_Jesus.mp3');
+        //music.play();
+        music.loop =true;
+        //music.playbackRate = 2;
+        //music.pause();
+    }
+
     // example - create a collider on our object with various fields we might need (you will likely need to add/remove/edit how this works)
     createSphereCollider(object, radius, onCollide = null) {
         object.stop=vec3.fromValues(0,0,0);
@@ -51,6 +62,7 @@ class Game {
 
     // runs once on startup after the scene loads the objects
     async onStart() {
+        this.customMusic();
         console.log("On start");
 
         // this just prevents the context menu from popping up when you right click
@@ -76,29 +88,46 @@ class Game {
             e.preventDefault();
 
             switch (e.key) {
+                // switches the camera between 3rd-person and 1st-person
+                case "f":
+                    if (this.state.cameraKey == 0) {
+                        this.state.cameraKey = 1;
+                    } else {
+                        this.state.cameraKey = 0;
+                    }
+                    break;
+                case "m":
+                    music.play();
+                    break;
+                case "n":
+                    music.pause();
+                    break;
                 case "a":
                     //console.log(this.player.stop);
                     if (this.player.stop[0] <= 0) {
                         this.player.translate(vec3.fromValues(0.25, 0, 0));
-                        // also change camera position
+                        vec3.add(this.state.camera[1].position, this.state.camera[1].position, vec3.fromValues(0.25, 0, 0));
                     }
                     break;
                 case "d":
                     //console.log(this.player.stop);
                     if (this.player.stop[0] >= 0) {
                         this.player.translate(vec3.fromValues(-0.25, 0, 0));
+                        vec3.add(this.state.camera[1].position, this.state.camera[1].position, vec3.fromValues(-0.25, 0, 0));
                     }
                     break;
                 case "s":
                     //console.log(this.player.stop);
                     if (this.player.stop[2] >= 0) {
                         this.player.translate(vec3.fromValues(0, 0, -0.25));
+                        vec3.add(this.state.camera[1].position, this.state.camera[1].position, vec3.fromValues(0, 0, -0.25));
                     }
                     break;
                 case "w":
                     //console.log(this.player.stop);
                     if (this.player.stop[2] <= 0) {
                         this.player.translate(vec3.fromValues(0, 0, 0.25));
+                        vec3.add(this.state.camera[1].position, this.state.camera[1].position, vec3.fromValues(0, 0, 0.25));
                     }
                     break;
                 default:
