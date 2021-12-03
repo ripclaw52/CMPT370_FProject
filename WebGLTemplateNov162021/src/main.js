@@ -108,10 +108,6 @@ async function main() {
         uniform float nVal;
         uniform float alphaVal;
         
-        //uniform vec3 uLightPosition;
-        //uniform vec3 uLightColour;
-        //uniform float uLightStrength;
-        
         uniform int samplerExists;
         uniform sampler2D uTexture;
 
@@ -266,6 +262,16 @@ function drawScene(gl, deltaTime, state) {
     sorted.map((object) => {
         gl.useProgram(object.programInfo.program);
         {
+            if (object.material.alpha < 1.0) {
+                gl.depthMask(false);
+                gl.enable(gl.BLEND);
+                gl.blendFunc(gl.ONE_MINUS_CONSTANT_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+            } else {
+                gl.disable(gl.BLEND);
+                gl.depthMask(true);
+                gl.enable(gl.DEPTH_TEST);
+                gl.blendFunc(gl.ONE_MINUS_CONSTANT_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+            }
             // Projection Matrix ....
             let projectionMatrix = mat4.create();
             let fovy = 90.0 * Math.PI / 180.0; // Vertical field of view in radians

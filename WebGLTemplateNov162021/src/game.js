@@ -40,6 +40,7 @@ class Game {
             // call the onCollide we define for that specific object. This way we can handle collisions identically for all
             // objects that can collide but they can do different things (ie. player colliding vs projectile colliding)
             // use the modeling transformation for object and otherObject to transform position into current location
+
             var objectMatrix = vec3.create();
             var otherMatrix = vec3.create();
             vec3.transformMat4(objectMatrix, object.model.position, object.modelMatrix);
@@ -50,7 +51,7 @@ class Game {
                 //object.stop = otherMatrix[2]-objectMatrix[2];
                 //object.stop = otherMatrix[0]-objectMatrix[0];
                 vec3.subtract(object.stop, otherMatrix, objectMatrix);
-                console.log(object.stop);
+                //console.log(object.stop);
                 return;
             }
         });
@@ -72,6 +73,8 @@ class Game {
 
         this.createSphereCollider(this.player, 0.25);
         this.createSphereCollider(npcObject, 0.25);
+
+        //this.createSphereCollider(getObject(this.state, "myWall1"), 0.25);
         // example - create sphere colliders on our two objects as an example, we give 2 objects colliders otherwise
         // no collision can happen
         // this.createSphereCollider(this.cube, 0.5, (otherObject) => {
@@ -100,11 +103,18 @@ class Game {
                         music.pause();
                     }
                     break;
+                case "q":
+                    vec3.add(this.state.camera[1].front, this.state.camera[1].front, vec3.fromValues(0.25, 0, 0));
+                    break;
+                case "e":
+                    vec3.add(this.state.camera[1].front, this.state.camera[1].front, vec3.fromValues(-0.25, 0, 0));
+                    break;
                 case "a":
                     //console.log(this.player.stop);
                     if (this.player.stop[0] <= 0) {
                         this.player.translate(vec3.fromValues(0.25, 0, 0));
                         vec3.add(this.state.camera[1].position, this.state.camera[1].position, vec3.fromValues(0.25, 0, 0));
+                        vec3.add(this.state.camera[1].front, this.state.camera[1].front, vec3.fromValues(0.25, 0, 0));
                     }
                     break;
                 case "d":
@@ -112,6 +122,7 @@ class Game {
                     if (this.player.stop[0] >= 0) {
                         this.player.translate(vec3.fromValues(-0.25, 0, 0));
                         vec3.add(this.state.camera[1].position, this.state.camera[1].position, vec3.fromValues(-0.25, 0, 0));
+                        vec3.add(this.state.camera[1].front, this.state.camera[1].front, vec3.fromValues(-0.25, 0, 0));
                     }
                     break;
                 case "s":
@@ -119,6 +130,7 @@ class Game {
                     if (this.player.stop[2] >= 0) {
                         this.player.translate(vec3.fromValues(0, 0, -0.25));
                         vec3.add(this.state.camera[1].position, this.state.camera[1].position, vec3.fromValues(0, 0, -0.25));
+                        vec3.add(this.state.camera[1].front, this.state.camera[1].front, vec3.fromValues(0, 0, -0.25));
                     }
                     break;
                 case "w":
@@ -126,6 +138,7 @@ class Game {
                     if (this.player.stop[2] <= 0) {
                         this.player.translate(vec3.fromValues(0, 0, 0.25));
                         vec3.add(this.state.camera[1].position, this.state.camera[1].position, vec3.fromValues(0, 0, 0.25));
+                        vec3.add(this.state.camera[1].front, this.state.camera[1].front, vec3.fromValues(0, 0, 0.25));
                     }
                     break;
                 default:
