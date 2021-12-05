@@ -189,10 +189,11 @@ class Game {
 
     // Runs once every frame non stop after the scene loads
     onUpdate(deltaTime) {
+        const npcObject = getObject(this.state, "myNPC");
         // TODO - Here we can add game logic, like moving game objects, detecting collisions, you name it. Examples of functions can be found in sceneFunctions
 
         // example: Rotate a single object we defined in our start method
-        // this.cube.rotate('x', deltaTime * 0.5);
+        this.cube.rotate('y', deltaTime * 0.5);
 
         // example: Rotate all objects in the scene marked with a flag
         // this.state.objects.forEach((object) => {
