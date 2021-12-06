@@ -78,10 +78,14 @@ class Game {
         // example - set an object in onStart before starting our render loop!
         this.player = getObject(this.state, "myCube");
         const npcObject = getObject(this.state, "myNPC"); // we wont save this as instance var since we dont plan on using it in update
-
+        const npcObject1 = getObject(this.state, "myWall5");
+        const npcObject2 = getObject(this.state, "myWall6");
+        
         this.createSphereCollider(this.player, 0.25);
         this.createSphereCollider(npcObject, 0.25);
-
+        
+        this.createSphereCollider(npcObject1, 0.3);
+        this.createSphereCollider(npcObject2, 0.3);
         //this.createSphereCollider(getObject(this.state, "myWall1"), 0.25);
         // example - create sphere colliders on our two objects as an example, we give 2 objects colliders otherwise
         // no collision can happen
