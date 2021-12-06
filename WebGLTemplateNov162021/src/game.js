@@ -4,11 +4,48 @@ class Game {
         this.spawnedObjects = [];
         this.collidableObjects = [];
         this.n=0;
+        this.pointLightCycle=0;
+        this.pointLightColours=[-1, -1, -1];
+        this.pointLightC=[(1/255),(1/255),(1/255)];
     }
 
     // example - we can add our own custom method to our game and call it using 'this.customMethod()'
     customMethod() {
         console.log("Custom method!");
+    }
+
+    pointLightCycleRed() {
+        if (this.pointLightCycle<2) {
+            this.pointLightColours[0]+=(this.pointLightC[0]);
+            if (this.pointLightColours[0]>=1){
+                this.pointLightC[0]= (-this.pointLightC[0]);
+            } else if (this.pointLightColours[0]<-1){
+                this.pointLightC[0]= (-this.pointLightC[0]);
+                this.pointLightCycle++;
+            }
+        }
+    }
+    pointLightCycleGreen() {
+        if (this.pointLightCycle>=1) {
+            this.pointLightColours[1]+=(this.pointLightC[1]);
+            if (this.pointLightColours[1]>=1){
+                this.pointLightC[1]= (-this.pointLightC[1]);
+            } else if (this.pointLightColours[1]<-1){
+                this.pointLightC[1]= (-this.pointLightC[1]);
+                this.pointLightCycle++;
+            }
+        }
+    }
+    pointLightCycleBlue() {
+        if (this.pointLightCycle>=2) {
+            this.pointLightColours[2]+=(this.pointLightC[2]);
+            if (this.pointLightColours[2]>=1){
+                this.pointLightC[2]= (-this.pointLightC[2]);
+            } else if (this.pointLightColours[2]<-1){
+                this.pointLightC[2]= (-this.pointLightC[2]);
+                this.pointLightCycle++;
+            }
+        }
     }
 
     customMusic() {
@@ -107,6 +144,10 @@ class Game {
         // this.createSphereCollider(otherCube, 0.5);
 
         // example - setting up a key press event to move an object in the scene
+
+        this.state.pointLights[0].colour[0] = this.pointLightColours[0];
+        this.state.pointLights[0].colour[1] = this.pointLightColours[1];
+        this.state.pointLights[0].colour[2] = this.pointLightColours[2];
 
         document.addEventListener("keypress", (e) => {
             e.preventDefault();
@@ -216,12 +257,23 @@ class Game {
 
     // Runs once every frame non stop after the scene loads
     onUpdate(deltaTime) {
+        if (this.pointLightCycle === 3) {
+            this.pointLightCycle=0;
+        }
+        this.pointLightCycleRed();
+        this.pointLightCycleGreen();
+        this.pointLightCycleBlue();
+
+        this.state.pointLights[0].colour[0] = this.pointLightColours[0];
+        this.state.pointLights[0].colour[1] = this.pointLightColours[1];
+        this.state.pointLights[0].colour[2] = this.pointLightColours[2];
+
         this.customCounter();
         const npcObject = getObject(this.state, "myNPC");
         // TODO - Here we can add game logic, like moving game objects, detecting collisions, you name it. Examples of functions can be found in sceneFunctions
 
         // example: Rotate a single object we defined in our start method
-        this.cube.rotate('y', deltaTime * 0.5);
+        npcObject.rotate('y', deltaTime * 0.5);
         
         if(this.n === 150){
             npcObject.translate(vec3.fromValues(0, 0, 1));
