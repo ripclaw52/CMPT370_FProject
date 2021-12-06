@@ -16,7 +16,18 @@ class Game {
         console.log(music);
         music.loop =true;
     }
-
+    
+    shootSphere(object) {
+        spawnObject({
+            name: "bullet",
+            type: "cube",
+            material: {
+                diffuse: randomVec3(0, 1)
+            },
+            position: vec3.fromValues(object.model.position[0], object.model.position[1], object.model.position[2]+2),
+            scale: vec3.fromValues(0.5, 0.5, 0.5)
+        }, this.state);
+    }
     // example - create a collider on our object with various fields we might need (you will likely need to add/remove/edit how this works)
     createSphereCollider(object, radius, onCollide = null) {
         object.stop=vec3.fromValues(0,0,0);
@@ -140,6 +151,9 @@ class Game {
                         vec3.add(this.state.camera[1].position, this.state.camera[1].position, vec3.fromValues(0, 0, 0.25));
                         vec3.add(this.state.camera[1].front, this.state.camera[1].front, vec3.fromValues(0, 0, 0.25));
                     }
+                    break;
+                case "space":
+
                     break;
                 default:
                     break;
