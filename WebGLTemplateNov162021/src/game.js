@@ -3,6 +3,7 @@ class Game {
         this.state = state;
         this.spawnedObjects = [];
         this.collidableObjects = [];
+        this.n=0;
     }
 
     // example - we can add our own custom method to our game and call it using 'this.customMethod()'
@@ -15,6 +16,13 @@ class Game {
         const music = document.getElementById("music");
         console.log(music);
         music.loop =true;
+    }
+    
+    customCounter(){
+        this.n += 1;
+        if(this.n>600){
+            this.n=0;
+        }
     }
 
     // example - create a collider on our object with various fields we might need (you will likely need to add/remove/edit how this works)
@@ -189,12 +197,22 @@ class Game {
 
     // Runs once every frame non stop after the scene loads
     onUpdate(deltaTime) {
+        this.customCounter();
         const npcObject = getObject(this.state, "myNPC");
         // TODO - Here we can add game logic, like moving game objects, detecting collisions, you name it. Examples of functions can be found in sceneFunctions
 
         // example: Rotate a single object we defined in our start method
         this.cube.rotate('y', deltaTime * 0.5);
-
+        
+        if(this.n === 150){
+            npcObject.translate(vec3.fromValues(0, 0, 1));
+        }else if(this.n === 300){
+            npcObject.translate(vec3.fromValues(0, 0, -1));
+        }else if(this.n === 450){
+            npcObject.translate(vec3.fromValues(0, 0, -1));
+        }else if(this.n === 600){
+            npcObject.translate(vec3.fromValues(0, 0, 1));
+        }
         // example: Rotate all objects in the scene marked with a flag
         // this.state.objects.forEach((object) => {
         //     if (object.constantRotate) {
