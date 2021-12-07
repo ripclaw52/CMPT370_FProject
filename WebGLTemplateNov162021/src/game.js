@@ -3,10 +3,17 @@ class Game {
         this.state = state;
         this.spawnedObjects = [];
         this.collidableObjects = [];
+        
         this.n=0;
+
         this.pointLightCycle=0;
-        this.pointLightColours=[-1, -1, -1];
+        this.pointLightColours=[0, 0, 0];
         this.pointLightC=[(1/255),(1/255),(1/255)];
+        this.pointLightMax =  0.5
+        this.pointLightMin = -0.5
+
+        this.projectileOrigin = [];
+        this.projectileState=false;
     }
 
     // example - we can add our own custom method to our game and call it using 'this.customMethod()'
@@ -17,9 +24,9 @@ class Game {
     pointLightCycleRed() {
         if (this.pointLightCycle<2) {
             this.pointLightColours[0]+=(this.pointLightC[0]);
-            if (this.pointLightColours[0]>=1){
+            if (this.pointLightColours[0]>=this.pointLightMax){
                 this.pointLightC[0]= (-this.pointLightC[0]);
-            } else if (this.pointLightColours[0]<-1){
+            } else if (this.pointLightColours[0]<this.pointLightMin){
                 this.pointLightC[0]= (-this.pointLightC[0]);
                 this.pointLightCycle++;
             }
@@ -28,9 +35,9 @@ class Game {
     pointLightCycleGreen() {
         if (this.pointLightCycle>=1) {
             this.pointLightColours[1]+=(this.pointLightC[1]);
-            if (this.pointLightColours[1]>=1){
+            if (this.pointLightColours[1]>=this.pointLightMax){
                 this.pointLightC[1]= (-this.pointLightC[1]);
-            } else if (this.pointLightColours[1]<-1){
+            } else if (this.pointLightColours[1]<this.pointLightMin){
                 this.pointLightC[1]= (-this.pointLightC[1]);
                 this.pointLightCycle++;
             }
@@ -39,9 +46,9 @@ class Game {
     pointLightCycleBlue() {
         if (this.pointLightCycle>=2) {
             this.pointLightColours[2]+=(this.pointLightC[2]);
-            if (this.pointLightColours[2]>=1){
+            if (this.pointLightColours[2]>=this.pointLightMax){
                 this.pointLightC[2]= (-this.pointLightC[2]);
-            } else if (this.pointLightColours[2]<-1){
+            } else if (this.pointLightColours[2]<this.pointLightMin){
                 this.pointLightC[2]= (-this.pointLightC[2]);
                 this.pointLightCycle++;
             }
@@ -55,15 +62,24 @@ class Game {
         music.loop =true;
     }
     
-    shootSphere(object) {
-        spawnObject({
+    moveObjectToPosition(object, max) {
+        if (object.model.position[2] >= max){
+            this.projectileState=false;
+        } else if (object.model.position[2] < max) {
+            object.model.position[2]++;
+        }
+    }
+
+    createBullet(object) {
+        return spawnObject({
             name: "bullet",
             type: "cube",
             material: {
-                diffuse: randomVec3(0, 1)
+                diffuse: randomVec3(0, 1),
+                alpha: 0.5,
             },
-            position: vec3.fromValues(object.model.position[0], object.model.position[1], object.model.position[2]+2),
-            scale: vec3.fromValues(0.5, 0.5, 0.5)
+            position: vec3.fromValues(object.model.position[0], object.model.position[1], object.model.position[2] + 0.5),
+            scale: vec3.fromValues(0.25, 0.25, 0.75),
         }, this.state);
     }
 
@@ -149,6 +165,8 @@ class Game {
         this.state.pointLights[0].colour[1] = this.pointLightColours[1];
         this.state.pointLights[0].colour[2] = this.pointLightColours[2];
 
+        this.projectileOrigin = this.player.model.position;
+
         document.addEventListener("keypress", (e) => {
             e.preventDefault();
 
@@ -175,7 +193,7 @@ class Game {
                     vec3.add(this.state.camera[1].front, this.state.camera[1].front, vec3.fromValues(-0.25, 0, 0));
                     break;
                 case "a":
-                    //console.log(this.player.stop);
+                    //console.log(this.player.model.position);
                     if (this.player.stop[0] <= 0) {
                         this.player.translate(vec3.fromValues(0.25, 0, 0));
                         vec3.add(this.state.camera[1].position, this.state.camera[1].position, vec3.fromValues(0.25, 0, 0));
@@ -183,7 +201,7 @@ class Game {
                     }
                     break;
                 case "d":
-                    //console.log(this.player.stop);
+                    //console.log(this.player.model.position);
                     if (this.player.stop[0] >= 0) {
                         this.player.translate(vec3.fromValues(-0.25, 0, 0));
                         vec3.add(this.state.camera[1].position, this.state.camera[1].position, vec3.fromValues(-0.25, 0, 0));
@@ -191,7 +209,7 @@ class Game {
                     }
                     break;
                 case "s":
-                    //console.log(this.player.stop);
+                    //console.log(this.player.model.position);
                     if (this.player.stop[2] >= 0) {
                         this.player.translate(vec3.fromValues(0, 0, -0.25));
                         vec3.add(this.state.camera[1].position, this.state.camera[1].position, vec3.fromValues(0, 0, -0.25));
@@ -199,15 +217,18 @@ class Game {
                     }
                     break;
                 case "w":
-                    //console.log(this.player.stop);
+                    //console.log(this.player.model.position);
                     if (this.player.stop[2] <= 0) {
                         this.player.translate(vec3.fromValues(0, 0, 0.25));
                         vec3.add(this.state.camera[1].position, this.state.camera[1].position, vec3.fromValues(0, 0, 0.25));
                         vec3.add(this.state.camera[1].front, this.state.camera[1].front, vec3.fromValues(0, 0, 0.25));
                     }
                     break;
-                case "space":
-
+                case " ":
+                    console.log("spacekey pressed")
+                    //this.shootSphere();
+                    this.projectileState=true;
+                    this.moveObjectToPosition(this.createBullet(this.player), 50);
                     break;
                 default:
                     break;
@@ -257,6 +278,8 @@ class Game {
 
     // Runs once every frame non stop after the scene loads
     onUpdate(deltaTime) {
+        this.projectileOrigin = this.player.model.position;
+
         if (this.pointLightCycle === 3) {
             this.pointLightCycle=0;
         }
