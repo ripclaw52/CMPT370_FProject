@@ -12,8 +12,7 @@ class Game {
         this.pointLightMax =  0.5
         this.pointLightMin = -0.5
 
-        this.projectileOrigin = [];
-        this.projectileState=false;
+        this.projectileObjectPosition = [];
     }
 
     // example - we can add our own custom method to our game and call it using 'this.customMethod()'
@@ -63,15 +62,17 @@ class Game {
     }
     
     moveObjectToPosition(object, max) {
-        if (object.model.position[2] >= max){
+        console.log(object);
+        if (object.position[2] >= max){
             this.projectileState=false;
-        } else if (object.model.position[2] < max) {
-            object.model.position[2]++;
+        } else if (object.position[2] < max) {
+            object.position[2]++;
         }
     }
 
     createBullet(object) {
-        return spawnObject({
+        object.projectileStatus=false;
+        object.projectileObject = spawnObject({
             name: "bullet",
             type: "cube",
             material: {
@@ -79,7 +80,7 @@ class Game {
                 alpha: 0.5,
             },
             position: vec3.fromValues(object.model.position[0], object.model.position[1], object.model.position[2] + 0.5),
-            scale: vec3.fromValues(0.25, 0.25, 0.75),
+            scale: vec3.fromValues(0.15, 0.15, 0.5),
         }, this.state);
     }
 
@@ -165,7 +166,8 @@ class Game {
         this.state.pointLights[0].colour[1] = this.pointLightColours[1];
         this.state.pointLights[0].colour[2] = this.pointLightColours[2];
 
-        this.projectileOrigin = this.player.model.position;
+        this.projectileObjectPosition = this.player.model.position;
+        //this.createBullet(this.player);
 
         document.addEventListener("keypress", (e) => {
             e.preventDefault();
@@ -225,10 +227,10 @@ class Game {
                     }
                     break;
                 case " ":
-                    console.log("spacekey pressed")
-                    //this.shootSphere();
-                    this.projectileState=true;
-                    this.moveObjectToPosition(this.createBullet(this.player), 50);
+                    console.log();
+                    this.createBullet(this.player);
+                    this.player.projectileStatus=true;
+                    console.log(state.object);
                     break;
                 default:
                     break;
@@ -278,7 +280,7 @@ class Game {
 
     // Runs once every frame non stop after the scene loads
     onUpdate(deltaTime) {
-        this.projectileOrigin = this.player.model.position;
+        this.projectileObject = this.player.model.position;
 
         if (this.pointLightCycle === 3) {
             this.pointLightCycle=0;
