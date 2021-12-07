@@ -13,6 +13,9 @@ class Game {
         this.pointLightMin = -0.5
 
         this.projectileObjectPosition = [];
+        this.projectileObjects = [];
+        this.bulletIndex=0;
+        this.distanceFromPlayer=10;
     }
 
     // example - we can add our own custom method to our game and call it using 'this.customMethod()'
@@ -60,28 +63,42 @@ class Game {
         console.log(music);
         music.loop =true;
     }
-    
-    moveObjectToPosition(object, max) {
-        console.log(object);
-        if (object.position[2] >= max){
-            this.projectileState=false;
-        } else if (object.position[2] < max) {
-            object.position[2]++;
+
+    limitBulletAmount(object) {
+        if (this.projectileObjects.length >= 10) {
+            this.deleteBullet(state.objects, object);
+            this.deleteBullet(this.projectileObjects, object);
         }
     }
 
-    createBullet(object) {
-        object.projectileStatus=false;
-        object.projectileObject = spawnObject({
-            name: "bullet",
+    moveBullet(object) {
+    }
+    
+    createBullet() {
+        spawnObject({
+            name: `bullet${this.bulletIndex}`,
             type: "cube",
             material: {
                 diffuse: randomVec3(0, 1),
                 alpha: 0.5,
             },
-            position: vec3.fromValues(object.model.position[0], object.model.position[1], object.model.position[2] + 0.5),
+            position: vec3.fromValues(this.projectileObjectPosition[0], this.projectileObjectPosition[1], this.projectileObjectPosition[2] + 0.5),
             scale: vec3.fromValues(0.15, 0.15, 0.5),
         }, this.state);
+
+        this.bullet = getObject(this.state, `bullet${this.bulletIndex}`);
+        this.projectileObjects.push(this.bullet);
+        
+        this.bulletIndex++;
+    }
+
+    deleteBullet(list, object) {
+        for (let i=0; i<list.length; i++) {
+            if (list[i].name === object.name) {
+                list.splice(i, 1);
+                break;
+            }
+        }
     }
 
     customCounter(){
@@ -227,10 +244,9 @@ class Game {
                     }
                     break;
                 case " ":
-                    console.log();
-                    this.createBullet(this.player);
-                    this.player.projectileStatus=true;
-                    console.log(state.object);
+                    this.createBullet();
+                    console.log("state: ", this.state.objects);
+                    console.log("projectile list: ", this.projectileObjects);
                     break;
                 default:
                     break;
@@ -281,6 +297,7 @@ class Game {
     // Runs once every frame non stop after the scene loads
     onUpdate(deltaTime) {
         this.projectileObject = this.player.model.position;
+        this.limitBulletAmount(this.projectileObjects[0]);
 
         if (this.pointLightCycle === 3) {
             this.pointLightCycle=0;
@@ -309,6 +326,18 @@ class Game {
         }else if(this.n === 600){
             npcObject.translate(vec3.fromValues(0, 0, 1));
         }
+
+        this.projectileObjects.forEach((object) => {
+            console.log("object: ", object);
+            console.log("player", this.player);
+            if (vec3.distance(object.model.position, this.player.model.position) <= this.distanceFromPlayer) {
+                vec3.add(object.model.position, object.model.position, vec3.fromValues(0, 0, 0.1));
+            } else {
+                this.deleteBullet(state.objects, object);
+                this.deleteBullet(this.projectileObjects, object);
+            }
+            object.rotate('z', deltaTime * 0.75);
+        });
         // example: Rotate all objects in the scene marked with a flag
         // this.state.objects.forEach((object) => {
         //     if (object.constantRotate) {
