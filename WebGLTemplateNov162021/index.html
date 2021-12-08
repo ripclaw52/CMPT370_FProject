@@ -29,12 +29,29 @@
 
     <!-- main canvas to be rendered -->
     <div>
-        <div style="position: absolute; display: block;">
-            <h1 style="color:blue;">timer</h1>
+        <div style="color: white; position: absolute; display: block;">
+            <h1 id="timer" style="color:blue;">timer</h1>
             <h2 style="color: red;">Centre this lovely text</h2>
             <h3 id="currentMusic" style="color: green;">Currently Playing</h3>
+
+            <h1>Instructions</h1>
+
+            <h1>Controls</h1>
+            <ul type="square">
+                <li id="w">[w] - forward</li>
+                <li id="a">[a] - left</li>
+                <li id="s">[s] - back</li>
+                <li id="d">[d] - right<br></br></li>
+                <li id="q">[q] - rotate left</li>
+                <li id="e">[e] - rotate right<br></br></li>
+                <li id="f">[f] - change view<br></br></li>
+                <li id="space">[space] - fire projectile<br></br></li>
+                <li id="m">[m] - play/pause music</li>
+                <li id="ArrowRight">[<span>&#8594;</span>] - select next track</li>
+                <li id="ArrowLeft">[<span>&#8592;</span>] - select prev track</li>
+            </ul>
         </div>
-        <canvas id="glCanvas" style="width: 100%; height: 100%; display:block;"></canvas>
+        <canvas id="glCanvas" style="width: 100%; height: 50%; display:block;"></canvas>
     </div>
 
 
@@ -60,6 +77,8 @@
         Location of music player javascript code
         https://javascript-tutor.net/index.php/playing-music-using-javascript/
     -->
+    <audio id="laser"><source src="./audio/laser.mp3" type="audio/mpeg"></audio>
+
     <audio id="track1">
         <source src="./audio/Personal_Jesus.mp3" type="audio/mpeg">
     </audio>

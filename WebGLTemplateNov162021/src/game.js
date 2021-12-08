@@ -10,6 +10,9 @@ class Game {
         this.musicPlayListNames = [];
         this.musicIndex = 0;
 
+        this.keyUpColor = "white";
+        this.keyDownColor = "green";
+
         this.pointLightCycle=0;
         this.pointLightColours=[0, 0, 0];
         this.pointLightC=[(1/255),(1/255),(1/255)];
@@ -224,11 +227,17 @@ class Game {
         const songName = document.getElementById("currentMusic");
         songName.innerHTML = this.musicPlayListNames[this.musicIndex];
 
+        const projectileNoise = document.getElementById("laser");
+        projectileNoise.playbackRate = 10;
+
+        //const timerUpdate = document.getElementById("timerUpdate");
+
         document.addEventListener("keydown", (e) => {
             e.preventDefault();
 
             switch (e.key) {
                 case "ArrowRight":
+                    document.getElementById("ArrowRight").style.color = this.keyDownColor;
                     this.musicPlayList[this.musicIndex].pause();
                     this.musicPlayList[this.musicIndex].currentTime = 0;
                     if (this.musicIndex === this.musicPlayList.length-1) {
@@ -240,6 +249,7 @@ class Game {
                     songName.innerHTML = this.musicPlayListNames[this.musicIndex];
                     break;
                 case "ArrowLeft":
+                    document.getElementById("ArrowLeft").style.color = this.keyDownColor;
                     this.musicPlayList[this.musicIndex].pause();
                     this.musicPlayList[this.musicIndex].currentTime = 0;
                     if (this.musicIndex == 0) {
@@ -251,6 +261,7 @@ class Game {
                     songName.innerHTML = this.musicPlayListNames[this.musicIndex];
                     break;
                 case "m":
+                    document.getElementById("m").style.color = this.keyDownColor;
                     if (this.musicPlayList[this.musicIndex].paused) {
                         this.musicPlayList[this.musicIndex].play();
                     } else {
@@ -260,6 +271,7 @@ class Game {
                 
                 // switches the camera between 3rd-person and 1st-person
                 case "f":
+                    document.getElementById("f").style.color = this.keyDownColor;
                     if (this.state.cameraKey == 0) {
                         this.state.cameraKey = 1;
                     } else {
@@ -267,13 +279,16 @@ class Game {
                     }
                     break;
                 case "q":
+                    document.getElementById("q").style.color = this.keyDownColor;
                     vec3.add(this.state.camera[1].front, this.state.camera[1].front, vec3.fromValues(0.25, 0, 0));
                     break;
                 case "e":
+                    document.getElementById("e").style.color = this.keyDownColor;
                     vec3.add(this.state.camera[1].front, this.state.camera[1].front, vec3.fromValues(-0.25, 0, 0));
                     break;
                 case "a":
                     //console.log(this.player.model.position);
+                    document.getElementById("a").style.color = this.keyDownColor;
                     if (this.player.stop[0] <= 0) {
                         this.player.translate(vec3.fromValues(0.25, 0, 0));
                         vec3.add(this.state.camera[1].position, this.state.camera[1].position, vec3.fromValues(0.25, 0, 0));
@@ -282,6 +297,7 @@ class Game {
                     break;
                 case "d":
                     //console.log(this.player.model.position);
+                    document.getElementById("d").style.color = this.keyDownColor;
                     if (this.player.stop[0] >= 0) {
                         this.player.translate(vec3.fromValues(-0.25, 0, 0));
                         vec3.add(this.state.camera[1].position, this.state.camera[1].position, vec3.fromValues(-0.25, 0, 0));
@@ -290,6 +306,7 @@ class Game {
                     break;
                 case "s":
                     //console.log(this.player.model.position);
+                    document.getElementById("s").style.color = this.keyDownColor;
                     if (this.player.stop[2] >= 0) {
                         this.player.translate(vec3.fromValues(0, 0, -0.25));
                         vec3.add(this.state.camera[1].position, this.state.camera[1].position, vec3.fromValues(0, 0, -0.25));
@@ -298,6 +315,7 @@ class Game {
                     break;
                 case "w":
                     //console.log(this.player.model.position);
+                    document.getElementById("w").style.color = this.keyDownColor;
                     if (this.player.stop[2] <= 0) {
                         this.player.translate(vec3.fromValues(0, 0, 0.25));
                         vec3.add(this.state.camera[1].position, this.state.camera[1].position, vec3.fromValues(0, 0, 0.25));
@@ -305,13 +323,57 @@ class Game {
                     }
                     break;
                 case " ":
+                    document.getElementById("space").style.color = this.keyDownColor;
                     this.createBullet();
-                    console.log("state: ", this.state.objects);
-                    console.log("projectile list: ", this.projectileObjects);
+                    projectileNoise.play();
+                    //console.log("state: ", this.state.objects);
+                    //console.log("projectile list: ", this.projectileObjects);
                     break;
                 default:
                     break;
             }
+        });
+
+        document.addEventListener("keyup", (e) => {
+            e.preventDefault();
+            switch(e.key) {
+                case "ArrowLeft":
+                    document.getElementById("ArrowLeft").style.color = this.keyUpColor;
+                    break;
+                case "ArrowRight":
+                    document.getElementById("ArrowRight").style.color = this.keyUpColor;
+                    break;
+                case "w":
+                    document.getElementById("w").style.color = this.keyUpColor;
+                    break;
+                case "a":
+                    document.getElementById("a").style.color = this.keyUpColor;
+                    break;
+                case "s":
+                    document.getElementById("s").style.color = this.keyUpColor;
+                    break;
+                case "d":
+                    document.getElementById("d").style.color = this.keyUpColor;
+                    break;
+                case "q":
+                    document.getElementById("q").style.color = this.keyUpColor;
+                    break;
+                case "e":
+                    document.getElementById("e").style.color = this.keyUpColor;
+                    break;
+                case "f":
+                    document.getElementById("f").style.color = this.keyUpColor;
+                    break;
+                case " ":
+                    document.getElementById("space").style.color = this.keyUpColor;
+                    break;
+                case "m":
+                    document.getElementById("m").style.color = this.keyUpColor;
+                    break;
+                default:
+                    break;
+            }
+
         });
 
         this.customMethod(); // calling our custom method! (we could put spawning logic, collision logic etc in there ;) )
@@ -357,6 +419,8 @@ class Game {
 
     // Runs once every frame non stop after the scene loads
     onUpdate(deltaTime) {
+        document.getElementById("timer").innerHTML = new Date(Date.now()).toISOString();
+
         this.projectileObject = this.player.model.position;
         this.limitBulletAmount(this.projectileObjects[0]);
 
