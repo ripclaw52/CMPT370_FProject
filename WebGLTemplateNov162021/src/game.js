@@ -6,6 +6,10 @@ class Game {
         
         this.n=0;
 
+        this.musicPlayList = [];
+        this.musicPlayListNames = [];
+        this.musicIndex = 0;
+
         this.pointLightCycle=0;
         this.pointLightColours=[0, 0, 0];
         this.pointLightC=[(1/255),(1/255),(1/255)];
@@ -58,10 +62,29 @@ class Game {
     }
 
     customMusic() {
-        //console.log("Add doom music");
-        const music = document.getElementById("music");
-        console.log(music);
-        music.loop =true;
+        // Personal Jesus
+        this.musicPlayListNames.push("01 - Personal Jesus");
+        this.musicPlayList.push(document.getElementById("track1"));
+        
+        // Won't Get Fooled Again
+        this.musicPlayListNames.push("02 - Won't Get Fooled Again");
+        this.musicPlayList.push(document.getElementById("track2"));
+        
+        // Juke Box Hero
+        this.musicPlayListNames.push("03 - Juke Box Hero");
+        this.musicPlayList.push(document.getElementById("track3"));
+        
+        // Back In Black
+        this.musicPlayListNames.push("04 - Back In Black");
+        this.musicPlayList.push(document.getElementById("track4"));
+        
+        // Refugee
+        this.musicPlayListNames.push("05 - Refugee");
+        this.musicPlayList.push(document.getElementById("track5"));
+        
+        // Spaceship Superstar
+        this.musicPlayListNames.push("06 - Spaceship Superstar");
+        this.musicPlayList.push(document.getElementById("track6"));
     }
 
     limitBulletAmount(object) {
@@ -163,6 +186,7 @@ class Game {
     // runs once on startup after the scene loads the objects
     async onStart() {
         this.customMusic();
+
         console.log("On start");
 
         // this just prevents the context menu from popping up when you right click
@@ -197,24 +221,49 @@ class Game {
 
         this.projectileObjectPosition = this.player.model.position;
         //this.createBullet(this.player);
+        const songName = document.getElementById("currentMusic");
+        songName.innerHTML = this.musicPlayListNames[this.musicIndex];
 
-        document.addEventListener("keypress", (e) => {
+        document.addEventListener("keydown", (e) => {
             e.preventDefault();
 
             switch (e.key) {
+                case "ArrowRight":
+                    this.musicPlayList[this.musicIndex].pause();
+                    this.musicPlayList[this.musicIndex].currentTime = 0;
+                    if (this.musicIndex === this.musicPlayList.length-1) {
+                        this.musicIndex=0;
+                    } else {
+                        this.musicIndex++;
+                    }
+                    //console.log("right key pressed");
+                    songName.innerHTML = this.musicPlayListNames[this.musicIndex];
+                    break;
+                case "ArrowLeft":
+                    this.musicPlayList[this.musicIndex].pause();
+                    this.musicPlayList[this.musicIndex].currentTime = 0;
+                    if (this.musicIndex == 0) {
+                        this.musicIndex = this.musicPlayList.length-1;
+                    } else {
+                        this.musicIndex--;
+                    }
+                    //console.log("left key pressed");
+                    songName.innerHTML = this.musicPlayListNames[this.musicIndex];
+                    break;
+                case "m":
+                    if (this.musicPlayList[this.musicIndex].paused) {
+                        this.musicPlayList[this.musicIndex].play();
+                    } else {
+                        this.musicPlayList[this.musicIndex].pause();
+                    }
+                    break;
+                
                 // switches the camera between 3rd-person and 1st-person
                 case "f":
                     if (this.state.cameraKey == 0) {
                         this.state.cameraKey = 1;
                     } else {
                         this.state.cameraKey = 0;
-                    }
-                    break;
-                case "m":
-                    if (music.paused) {
-                        music.play();
-                    } else {
-                        music.pause();
                     }
                     break;
                 case "q":
