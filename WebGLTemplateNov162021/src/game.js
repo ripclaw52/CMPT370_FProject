@@ -70,9 +70,6 @@ class Game {
             this.deleteBullet(this.projectileObjects, object);
         }
     }
-
-    moveBullet(object) {
-    }
     
     createBullet() {
         spawnObject({
@@ -120,6 +117,21 @@ class Game {
             }
         };
         this.collidableObjects.push(object);
+    }
+
+    checkSphereSquareCollision(object) {
+        object.stop=vec3.fromValues(0,0,0);
+        this.collidableObjects.forEach(otherObject => {
+            var x = Math.max(object.model.position[0] - 1, Math.min(otherObject.model.position[0], object.model.position[0] + 1));
+            var y = Math.max(object.model.position[1] - 1, Math.min(otherObject.model.position[1], object.model.position[1] + 1));
+            var z = Math.max(object.model.position[2] - 1, Math.min(otherObject.model.position[2], object.model.position[2] + 1));
+            var distance = Math.sqrt(
+                (x - otherObject.model.position[0]) * (x - otherObject.model.position[0]) +
+                (y - otherObject.model.position[1]) * (y - otherObject.model.position[1]) +
+                (z - otherObject.model.position[2]) * (z - otherObject.model.position[2])
+            );
+            return distance < object.collider.radius;
+        });
     }
 
     // example - function to check if an object is colliding with collidable objects
@@ -328,8 +340,8 @@ class Game {
         }
 
         this.projectileObjects.forEach((object) => {
-            console.log("object: ", object);
-            console.log("player", this.player);
+            //console.log("object: ", object);
+            //console.log("player", this.player);
             if (vec3.distance(object.model.position, this.player.model.position) <= this.distanceFromPlayer) {
                 vec3.add(object.model.position, object.model.position, vec3.fromValues(0, 0, 0.1));
             } else {

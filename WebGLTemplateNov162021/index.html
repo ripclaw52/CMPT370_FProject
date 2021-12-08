@@ -7,7 +7,7 @@
     <link rel="shortcut icon" href="favicon.ico" />
 </head>
 
-<body style="width: 100%; height: 100%; margin: 0; padding: 0">
+<body style="width: 100%; height: 100%; margin: 0; padding: 0;">
     <!-- This is the navigation bar at the top of the page -->
     <!-- This is populated by loading the common functions script -->
     <div id="myNavBar"></div>
@@ -28,8 +28,13 @@
     </div>
 
     <!-- main canvas to be rendered -->
-    <canvas id="glCanvas" style="width: 75%; height: 75%; display:block;"></canvas>
-    <h1 style="color:blue; display:inline-block;">timer</h1>
+    <div>
+        <div style="position: absolute; display: block;">
+            <h1 style="color:blue;">timer</h1>
+            <h2 style="color: red;">Centre this lovely text</h2>
+        </div>
+        <canvas id="glCanvas" style="width: 100%; height: 100%; display:block;"></canvas>
+    </div>
 
 
     <!-- This is a third party library for matrix math needed for WebGL calculations -->
