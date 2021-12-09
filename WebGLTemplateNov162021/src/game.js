@@ -16,8 +16,8 @@ class Game {
         this.pointLightCycle=0;
         this.pointLightColours=[0, 0, 0];
         this.pointLightC=[(1/255),(1/255),(1/255)];
-        this.pointLightMax =  0.5
-        this.pointLightMin = -0.5
+        this.pointLightMax =  0.25
+        this.pointLightMin = -0.25
 
         this.projectileObjectPosition = [];
         this.projectileObjects = [];
