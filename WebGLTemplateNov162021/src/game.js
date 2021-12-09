@@ -200,14 +200,87 @@ class Game {
         // example - set an object in onStart before starting our render loop!
         this.player = getObject(this.state, "myCube");
         const npcObject = getObject(this.state, "myNPC"); // we wont save this as instance var since we dont plan on using it in update
-        const npcObject1 = getObject(this.state, "myWall5");
-        const npcObject2 = getObject(this.state, "myWall6");
+        //set object for walls inside center
+        const wallObject1 = getObject(this.state, "myWall5");
+        const wallObject2 = getObject(this.state, "myWall6");
+        const wallObject3 = getObject(this.state, "myWall7");
+        const wallObject4 = getObject(this.state, "myWall8");
+        const wallObject5 = getObject(this.state, "myWall9");
+        const wallObject6 = getObject(this.state, "myWall10");
+        //set object for walls in South
+        const wallObjectS1 = getObject(this.state, "myWall1");
+        const wallObjectS2 = getObject(this.state, "myWall2");
+        const wallObjectS3 = getObject(this.state, "myWall3");
+        const wallObjectS4 = getObject(this.state, "myWall4");
+        const wallObjectS5 = getObject(this.state, "myWall11");
+        const wallObjectS6 = getObject(this.state, "myWall12");
+        const wallObjectS7 = getObject(this.state, "myWall13");
+        //set object for walls in East
+        const wallObjectE1 = getObject(this.state, "myWallE1");
+        const wallObjectE2 = getObject(this.state, "myWallE2");
+        const wallObjectE3 = getObject(this.state, "myWallE3");
+        const wallObjectE4 = getObject(this.state, "myWallE4");
+        const wallObjectE5 = getObject(this.state, "myWallE5");
+        const wallObjectE6 = getObject(this.state, "myWallE6");
+        const wallObjectE7 = getObject(this.state, "myWallE7");
+        const wallObjectE8 = getObject(this.state, "myWallE8");
+        //set object for walls in North
+        const wallObjectN1 = getObject(this.state, "myWallN1");
+        const wallObjectN2 = getObject(this.state, "myWallN2");
+        const wallObjectN3 = getObject(this.state, "myWallN3");
+        const wallObjectN4 = getObject(this.state, "myWallN4");
+        const wallObjectN5 = getObject(this.state, "myWallN5");
+        const wallObjectN6 = getObject(this.state, "myWallN6");
+        //set object for walls in West
+        const wallObjectW1 = getObject(this.state, "myWallW1");
+        const wallObjectW2 = getObject(this.state, "myWallW2");
+        const wallObjectW3 = getObject(this.state, "myWallW3");
+        const wallObjectW4 = getObject(this.state, "myWallW4");
+        const wallObjectW5 = getObject(this.state, "myWallW5");
+        const wallObjectW6 = getObject(this.state, "myWallW6");
         
         this.createSphereCollider(this.player, 0.25);
         this.createSphereCollider(npcObject, 0.25);
         
-        this.createSphereCollider(npcObject1, 0.3);
-        this.createSphereCollider(npcObject2, 0.3);
+        //set object Collider for walls inside center
+        this.createSphereCollider(wallObject1, 0.4);
+        this.createSphereCollider(wallObject2, 0.4);
+        this.createSphereCollider(wallObject3, 0.4);
+        this.createSphereCollider(wallObject4, 0.4);
+        this.createSphereCollider(wallObject5, 0.4);
+        this.createSphereCollider(wallObject6, 0.4);
+        //set object Collider for walls in South
+        this.createSphereCollider(wallObjectS1, 0.4);
+        this.createSphereCollider(wallObjectS2, 0.4);
+        this.createSphereCollider(wallObjectS3, 0.4);
+        this.createSphereCollider(wallObjectS4, 0.4);
+        this.createSphereCollider(wallObjectS5, 0.4);
+        this.createSphereCollider(wallObjectS6, 0.4);
+        this.createSphereCollider(wallObjectS7, 0.4);
+        //set object Collider for walls in East
+        this.createSphereCollider(wallObjectE1, 0.4);
+        this.createSphereCollider(wallObjectE2, 0.4);
+        this.createSphereCollider(wallObjectE3, 0.4);
+        this.createSphereCollider(wallObjectE4, 0.4);
+        this.createSphereCollider(wallObjectE5, 0.4);
+        this.createSphereCollider(wallObjectE6, 0.4);
+        this.createSphereCollider(wallObjectE7, 0.4);
+        this.createSphereCollider(wallObjectE8, 0.4);
+        //set object Collider for walls in North
+        this.createSphereCollider(wallObjectN1, 0.4);
+        this.createSphereCollider(wallObjectN2, 0.4);
+        this.createSphereCollider(wallObjectN3, 0.4);
+        this.createSphereCollider(wallObjectN4, 0.4);
+        this.createSphereCollider(wallObjectN5, 0.4);
+        this.createSphereCollider(wallObjectN6, 0.4);
+        //set object Collider for walls in West
+        this.createSphereCollider(wallObjectW1, 0.4);
+        this.createSphereCollider(wallObjectW2, 0.4);
+        this.createSphereCollider(wallObjectW3, 0.4);
+        this.createSphereCollider(wallObjectW4, 0.4);
+        this.createSphereCollider(wallObjectW5, 0.4);
+        this.createSphereCollider(wallObjectW6, 0.4);
+        
         //this.createSphereCollider(getObject(this.state, "myWall1"), 0.25);
         // example - create sphere colliders on our two objects as an example, we give 2 objects colliders otherwise
         // no collision can happen
