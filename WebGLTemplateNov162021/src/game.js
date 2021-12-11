@@ -541,7 +541,7 @@ class Game {
                     }
                     break;
                 case " ":
-                    console.log(this.player.model.position);
+                    //console.log(this.player.model.position);
                     document.getElementById("space").style.color = this.keyDownColor;
                     this.createBullet();
                     projectileNoise.play();
