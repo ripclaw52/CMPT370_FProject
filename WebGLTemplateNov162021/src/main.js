@@ -122,20 +122,23 @@ async function main() {
         uniform sampler2D uNormalTexture;
 
         out vec4 fragColor;
+
         void main() {
             vec3 normal = normalize(normalInterp);
             vec3 lightDirection = normalize(pointLight[0].position - oFragPosition);
             vec3 viewDirection = normalize(oCameraPosition - oFragPosition);
             vec3 H = normalize(viewDirection + lightDirection);
 
-            vec3 ambient = ambientVal * pointLight[0].colour * pointLight[0].strength;
+            vec3 ambient = ambientVal * pointLight[0].colour;// * pointLight[0].strength;
+            vec3 diffuse = pointLight[0].colour * (max(dot(normal,lightDirection),0.0));
             vec3 specular = pointLight[0].colour * specularVal * pow(max(dot(H,normal),0.0),nVal);
             
             if (samplerExists == 1) {
                 vec3 textureColour = texture(uTexture, oUV).rgb;
-                vec3 diffuse = mix(diffuseVal, textureColour.rgb, 0.7);
-            } else if (normalSamplerExists == 1) {
-                vec3 normVector = texture(uTexture, oUV).xyz;
+                diffuse = mix(diffuseVal, textureColour.rgb, 0.7);
+            }
+            if (normalSamplerExists == 1) {
+                vec3 normVector = texture(uNormalTexture, oUV).xyz;
                 normVector = 2.0 * normVector - 1.0;
 
                 //float uNormalScale = 5.0;
@@ -145,11 +148,9 @@ async function main() {
                 mat3 TBN = mat3(oTangent, biTangent, normal);
                 normVector = normalize(TBN * normVector);
 
-                float diff = max(dot(normVector,lightDirection),0.0);
-                vec3 diffuse = pointLight[0].colour * diff;
-            } else {
-                vec3 diffuse = pointLight[0].colour * (max(dot(normal,lightDirection),0.0));
+                diffuse = max(dot(normVector,lightDirection),0.0) * pointLight[0].colour;
             }
+
             fragColor = vec4(ambient + diffuse + specular, alphaVal);
         }
         `;

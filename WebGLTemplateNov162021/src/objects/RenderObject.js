@@ -115,10 +115,10 @@ class RenderObject {
         //lightPositions: this.gl.getUniformLocation(shaderProgram, 'uLightPositions'),
         //lightColours: this.gl.getUniformLocation(shaderProgram, 'uLightColours'),
         //lightStrengths: this.gl.getUniformLocation(shaderProgram, 'uLightStrengths'),
-        normalSampler: this.gl.getUniformLocation(shaderProgram, 'uNormalTexture'),
-        normalSamplerExists: this.gl.getUniformLocation(shaderProgram, "normalSamplerExists"),
         sampler: this.gl.getUniformLocation(shaderProgram, 'uTexture'),
         samplerExists: this.gl.getUniformLocation(shaderProgram, "samplerExists"),
+        normalSampler: this.gl.getUniformLocation(shaderProgram, 'uNormalTexture'),
+        normalSamplerExists: this.gl.getUniformLocation(shaderProgram, "normalSamplerExists")
       },
     };
     shaderValuesErrorCheck(programInfo);

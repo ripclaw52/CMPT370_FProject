@@ -13,16 +13,23 @@ class Game {
         this.keyUpColor = "white";
         this.keyDownColor = "green";
 
+        this.changeLights = true;
         this.pointLightCycle=0;
         this.pointLightColours=[0, 0, 0];
         this.pointLightC=[(1/255),(1/255),(1/255)];
-        this.pointLightMax =  0.25
-        this.pointLightMin = -0.25
+        this.pointLightMax =  0.5;
+        this.pointLightMin = -0.5;
 
         this.projectileObjectPosition = [];
         this.projectileObjects = [];
         this.bulletIndex=0;
         this.distanceFromPlayer=10;
+        this.bulletColor = [
+            [0.25, 0.75, 0.25],
+            [0.00, 1.00, 0.00],
+            [0.25, 1.00, 0.25],
+            0.5
+        ];
     }
 
     // example - we can add our own custom method to our game and call it using 'this.customMethod()'
@@ -90,6 +97,89 @@ class Game {
         this.musicPlayList.push(document.getElementById("track6"));
     }
 
+    customMusicGameChange() {
+        switch(this.musicIndex) {
+            // Personal Jesus
+            case 0: {
+                this.pointLightCycle = 0;
+                this.changeLights = true;
+                break;
+            }
+            // Won't Get Fooled Again
+            case 1: {
+                this.changeLights = false;
+                this.pointLightColours = [0.1, 0.3, 0.5];
+                this.state.pointLights[0].colour[0] = this.pointLightColours[0];
+                this.state.pointLights[0].colour[1] = this.pointLightColours[1];
+                this.state.pointLights[0].colour[2] = this.pointLightColours[2];
+                break;
+            }
+            // Juke Box Hero
+            case 2: {
+                this.changeLights = false;
+                this.pointLightColours = [1, 1, 1];
+                this.state.pointLights[0].colour[0] = this.pointLightColours[0];
+                this.state.pointLights[0].colour[1] = this.pointLightColours[1];
+                this.state.pointLights[0].colour[2] = this.pointLightColours[2];
+                this.bulletColor[0] = [1, 1, 1];
+                this.bulletColor[1] = [1, 1, 1];
+                this.bulletColor[2] = [1, 1, 1];
+                this.bulletColor[3] = 1;
+
+                break;
+            }
+            // Back In Black
+            case 3: {
+                this.changeLights = false;
+                this.pointLightColours = [0, 0, 0];
+                this.state.pointLights[0].colour[0] = this.pointLightColours[0];
+                this.state.pointLights[0].colour[1] = this.pointLightColours[1];
+                this.state.pointLights[0].colour[2] = this.pointLightColours[2];
+                this.bulletColor[0] = [1, 1, 1];
+                this.bulletColor[1] = [1, 1, 1];
+                this.bulletColor[2] = [1, 1, 1];
+                this.bulletColor[3] = 1;
+                break;
+            }
+            // Refugee
+            case 4: {
+                this.changeLights = false;
+                this.pointLightColours = [0.1, 0.55, 0.1];
+                this.state.pointLights[0].colour[0] = this.pointLightColours[0];
+                this.state.pointLights[0].colour[1] = this.pointLightColours[1];
+                this.state.pointLights[0].colour[2] = this.pointLightColours[2];
+                this.bulletColor[0] = [0, 0.5, 0];
+                this.bulletColor[1] = [0, 1, 0];
+                this.bulletColor[2] = [0, 0.5, 0];
+                this.bulletColor[3] = 1;
+                break;
+            }
+            // Spaceship Superstar
+            case 5: {
+                this.changeLights = true;
+                this.pointLightCycle = 4;
+                this.pointLightMax =  0.5;
+                this.pointLightMin = -0.5;
+                this.bulletColor[0] = randomVec3(0,1);
+                this.bulletColor[1] = randomVec3(0,1);
+                this.bulletColor[2] = randomVec3(0,1);
+                this.bulletColor[3] = 1;
+                break;
+            }
+            default: {
+                this.changeLights = true;
+                this.bulletColor[0] = [0.25, 0.75, 0.25];
+                this.bulletColor[1] = [0.00, 1.00, 0.00];
+                this.bulletColor[2] = [0.25, 1.00, 0.25];
+                this.bulletColor[3] = 0.5;
+                this.state.pointLights[0].colour[0] = this.pointLightColours[0];
+                this.state.pointLights[0].colour[1] = this.pointLightColours[1];
+                this.state.pointLights[0].colour[2] = this.pointLightColours[2];
+                break;
+            }
+        }
+    }
+
     limitBulletAmount(object) {
         if (this.projectileObjects.length >= 10) {
             this.deleteBullet(state.objects, object);
@@ -102,8 +192,10 @@ class Game {
             name: `bullet${this.bulletIndex}`,
             type: "cube",
             material: {
-                diffuse: randomVec3(0, 1),
-                alpha: 0.5,
+                ambient: this.bulletColor[0],
+                diffuse: this.bulletColor[1],
+                specular: this.bulletColor[2],
+                alpha: this.bulletColor[3],
             },
             position: vec3.fromValues(this.projectileObjectPosition[0], this.projectileObjectPosition[1], this.projectileObjectPosition[2] + 0.5),
             scale: vec3.fromValues(0.15, 0.15, 0.5),
@@ -339,6 +431,7 @@ class Game {
                         this.musicPlayList[this.musicIndex].play();
                     } else {
                         this.musicPlayList[this.musicIndex].pause();
+                        document.getElementById("m").style.color = this.keyDownColor;
                     }
                     break;
                 
@@ -396,7 +489,6 @@ class Game {
                     }
                     break;
                 case " ":
-                    console.log(state.objects);
                     document.getElementById("space").style.color = this.keyDownColor;
                     this.createBullet();
                     projectileNoise.play();
@@ -413,9 +505,11 @@ class Game {
             switch(e.key) {
                 case "ArrowLeft":
                     document.getElementById("ArrowLeft").style.color = this.keyUpColor;
+                    document.getElementById("m").style.color = this.keyUpColor;
                     break;
                 case "ArrowRight":
                     document.getElementById("ArrowRight").style.color = this.keyUpColor;
+                    document.getElementById("m").style.color = this.keyUpColor;
                     break;
                 case "w":
                     document.getElementById("w").style.color = this.keyUpColor;
@@ -442,7 +536,9 @@ class Game {
                     document.getElementById("space").style.color = this.keyUpColor;
                     break;
                 case "m":
-                    document.getElementById("m").style.color = this.keyUpColor;
+                    if (this.musicPlayList[this.musicIndex].paused) {
+                        document.getElementById("m").style.color = this.keyUpColor;
+                    }
                     break;
                 default:
                     break;
@@ -498,16 +594,20 @@ class Game {
         this.projectileObject = this.player.model.position;
         this.limitBulletAmount(this.projectileObjects[0]);
 
-        if (this.pointLightCycle === 3) {
-            this.pointLightCycle=0;
-        }
-        this.pointLightCycleRed();
-        this.pointLightCycleGreen();
-        this.pointLightCycleBlue();
+        this.customMusicGameChange();
 
-        this.state.pointLights[0].colour[0] = this.pointLightColours[0];
-        this.state.pointLights[0].colour[1] = this.pointLightColours[1];
-        this.state.pointLights[0].colour[2] = this.pointLightColours[2];
+        if (this.changeLights === true) {
+            if (this.pointLightCycle === 3) {
+                this.pointLightCycle = 0;
+            }
+            this.pointLightCycleRed();
+            this.pointLightCycleGreen();
+            this.pointLightCycleBlue();
+
+            this.state.pointLights[0].colour[0] = this.pointLightColours[0];
+            this.state.pointLights[0].colour[1] = this.pointLightColours[1];
+            this.state.pointLights[0].colour[2] = this.pointLightColours[2];
+        }
 
         this.customCounter();
         const npcObject = getObject(this.state, "myNPC");
