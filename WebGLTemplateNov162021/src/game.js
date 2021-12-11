@@ -28,7 +28,8 @@ class Game {
             [0.25, 0.75, 0.25],
             [0.00, 1.00, 0.00],
             [0.25, 1.00, 0.25],
-            0.5
+            0.5,
+            25
         ];
     }
 
@@ -125,7 +126,7 @@ class Game {
                 this.bulletColor[1] = [1, 1, 1];
                 this.bulletColor[2] = [1, 1, 1];
                 this.bulletColor[3] = 1;
-
+                this.bulletColor[4] = 50;
                 break;
             }
             // Back In Black
@@ -139,6 +140,7 @@ class Game {
                 this.bulletColor[1] = [1, 1, 1];
                 this.bulletColor[2] = [1, 1, 1];
                 this.bulletColor[3] = 1;
+                this.bulletColor[4] = 50;
                 break;
             }
             // Refugee
@@ -152,6 +154,7 @@ class Game {
                 this.bulletColor[1] = [0, 1, 0];
                 this.bulletColor[2] = [0, 0.5, 0];
                 this.bulletColor[3] = 1;
+                this.bulletColor[4] = 50;
                 break;
             }
             // Spaceship Superstar
@@ -164,6 +167,7 @@ class Game {
                 this.bulletColor[1] = randomVec3(0,1);
                 this.bulletColor[2] = randomVec3(0,1);
                 this.bulletColor[3] = 1;
+                this.bulletColor[4] = 50;
                 break;
             }
             default: {
@@ -172,6 +176,7 @@ class Game {
                 this.bulletColor[1] = [0.00, 1.00, 0.00];
                 this.bulletColor[2] = [0.25, 1.00, 0.25];
                 this.bulletColor[3] = 0.5;
+                this.bulletColor[4] = 25;
                 this.state.pointLights[0].colour[0] = this.pointLightColours[0];
                 this.state.pointLights[0].colour[1] = this.pointLightColours[1];
                 this.state.pointLights[0].colour[2] = this.pointLightColours[2];
@@ -180,6 +185,21 @@ class Game {
         }
     }
 
+    createFinish() {
+        spawnObject({
+            name: "finish",
+            type: "cube",
+            material: {
+                ambient: [0.3, 0.3, 0.3],
+                diffuse: [0, 1, 0],
+                specular: [0.5, 0.75, 0.5],
+                alpha: 0.25,
+                n: 25,
+            },
+            position: [-3.25, 0, 4],
+            scale: [1, 1, 1],
+        }, this.state);
+    }
     limitBulletAmount(object) {
         if (this.projectileObjects.length >= 10) {
             this.deleteBullet(state.objects, object);
@@ -196,6 +216,7 @@ class Game {
                 diffuse: this.bulletColor[1],
                 specular: this.bulletColor[2],
                 alpha: this.bulletColor[3],
+                n: this.bulletColor[4],
             },
             position: vec3.fromValues(this.projectileObjectPosition[0], this.projectileObjectPosition[1], this.projectileObjectPosition[2] + 0.5),
             scale: vec3.fromValues(0.15, 0.15, 0.5),
@@ -225,6 +246,7 @@ class Game {
 
     // example - create a collider on our object with various fields we might need (you will likely need to add/remove/edit how this works)
     createSphereCollider(object, radius, onCollide = null) {
+        object.finish=0;
         object.stop=vec3.fromValues(0,0,0);
         object.collider = {
             type: "SPHERE",
@@ -268,6 +290,15 @@ class Game {
             vec3.transformMat4(otherMatrix, otherObject.model.position, otherObject.modelMatrix);
 
             var distance = vec3.distance(objectMatrix, otherMatrix);
+            if ((otherObject.name === "finish") && (distance < (object.collider.radius + otherObject.collider.radius))) {
+                this.player.finish = 1;
+                return;
+            }
+            if ((otherObject.name === "myNPC") && (distance < (object.collider.radius + otherObject.collider.radius))) {
+                this.player.finish = 2;
+                vec3.subtract(object.stop, otherMatrix, objectMatrix);
+                return;
+            }
             if ((otherObject.name != object.name) && (distance < (object.collider.radius + otherObject.collider.radius))) {
                 //object.stop = otherMatrix[2]-objectMatrix[2];
                 //object.stop = otherMatrix[0]-objectMatrix[0];
@@ -281,6 +312,7 @@ class Game {
     // runs once on startup after the scene loads the objects
     async onStart() {
         this.customMusic();
+        this.createFinish();
 
         console.log("On start");
 
@@ -291,6 +323,7 @@ class Game {
 
         // example - set an object in onStart before starting our render loop!
         this.player = getObject(this.state, "myCube");
+        const finish = getObject(this.state, "finish");
         const npcObject = getObject(this.state, "myNPC"); // we wont save this as instance var since we dont plan on using it in update
         //set object for walls inside center
         const wallObject1 = getObject(this.state, "myWall5");
@@ -332,6 +365,8 @@ class Game {
         const wallObjectW6 = getObject(this.state, "myWallW6");
         
         this.createSphereCollider(this.player, 0.25);
+        this.createSphereCollider(finish, 0.25);
+
         this.createSphereCollider(npcObject, 0.25);
         
         //set object Collider for walls inside center
@@ -395,7 +430,18 @@ class Game {
         const projectileNoise = document.getElementById("laser");
         projectileNoise.playbackRate = 10;
 
+        const gameState = document.getElementById("gameState");
+        gameState.innerHTML = "playing...";
+
         //const timerUpdate = document.getElementById("timerUpdate");
+
+        if (this.player.finish === 1) {
+            // this means the game is won
+        } else if (this.player.finish === 2) {
+            // this means the game is lost
+        } else {
+            // continue to play the game
+        }
 
         document.addEventListener("keydown", (e) => {
             e.preventDefault();
@@ -452,6 +498,12 @@ class Game {
                     document.getElementById("e").style.color = this.keyDownColor;
                     vec3.add(this.state.camera[1].front, this.state.camera[1].front, vec3.fromValues(-0.25, 0, 0));
                     break;
+                    /*
+                case "r":
+                    document.getElementById("r").style.color = this.keyDownColor;
+                    this.resetGame();
+                    break;
+                    */
                 case "a":
                     //console.log(this.player.model.position);
                     document.getElementById("a").style.color = this.keyDownColor;
@@ -489,6 +541,7 @@ class Game {
                     }
                     break;
                 case " ":
+                    console.log(this.player.model.position);
                     document.getElementById("space").style.color = this.keyDownColor;
                     this.createBullet();
                     projectileNoise.play();
@@ -532,6 +585,11 @@ class Game {
                 case "f":
                     document.getElementById("f").style.color = this.keyUpColor;
                     break;
+                    /*
+                case "r":
+                    document.getElementById("r").style.color = this.keyUpColor;
+                    break;
+                    */
                 case " ":
                     document.getElementById("space").style.color = this.keyUpColor;
                     break;
@@ -589,6 +647,14 @@ class Game {
 
     // Runs once every frame non stop after the scene loads
     onUpdate(deltaTime) {
+        if (this.player.finish === 1) {
+            gameState.innerHTML = "YOU WON!";
+            gameState.style.color = "green";
+        }
+        if (this.player.finish === 2) {
+            gameState.innerHTML = "YOU LOST!";
+            gameState.style.color = "red";
+        }
         document.getElementById("timer").innerHTML = new Date(Date.now()).toISOString();
 
         this.projectileObject = this.player.model.position;

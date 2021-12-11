@@ -29,22 +29,40 @@
 
     <!-- main canvas to be rendered -->
     <div>
+        <h1 style="color: white; position: absolute; display:inline-block; text-alight: center; margin-left: 45%;">TANK ESCAPE</h1>
+        <h2 id="gameState" style="color: grey; position: absolute; display:inline-block; text-alight: center; margin-left: 85%;">GAME-STATE</h2>
         <div style="color: white; position: absolute; display: block;">
-            <h1 id="timer" style="color:blue;">timer</h1>
-            <h2 style="color: red;">Moving rule: the tank can not be moved close to the wall</h2>
+            <h3 id="timer" style="color:purple;">timer</h3>
             <h3 id="currentMusic" style="color: green;">Currently Playing</h3>
-
-            <h1>Instructions</h1>
-
-            <h1>Controls</h1>
+            <h2>Instructions</h2>
+            <p>
+                The player must reach the end<br>
+                of the maze to complete the game.<br>
+                Watch out for the enemy<br>
+                and don't let it touch you!
+            </p>
+            <h2>Controls</h2>
+            <style>
+                td {
+                    border: 1px solid white;
+                    padding: 5px;
+                  }
+            </style>
+            <table>
+                <tr style="text-align:center;">
+                    <td id="q">Q<br>rotate left</br></td>
+                    <td id="w">W<br>forward</br></td>
+                    <td id="e">E<br>rotate right</br></td>
+                    <!--<td id="r">R<br>reset</br></td>-->
+                </tr>
+                <tr style="text-align:center;">
+                    <td id="a">A<br>left</br></td>
+                    <td id="s">S<br>back</br></td>
+                    <td id="d">D<br>right</br></td>
+                    <td id="f">F<br>swap view</br></td>
+                </tr>
+            </table>
             <ul type="square">
-                <li id="w">[w] - forward</li>
-                <li id="a">[a] - left</li>
-                <li id="s">[s] - back</li>
-                <li id="d">[d] - right<br></br></li>
-                <li id="q">[q] - rotate left</li>
-                <li id="e">[e] - rotate right<br></br></li>
-                <li id="f">[f] - change view<br></br></li>
                 <li id="space">[space] - fire projectile<br></br></li>
                 <li id="m">[m] - play/pause music</li>
                 <li id="ArrowRight">[<span>&#8594;</span>] - select next track</li>
