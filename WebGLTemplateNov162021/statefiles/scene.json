@@ -1,2160 +1,2061 @@
-[
-    {
-        "objects": [
-            {
-                "name": "myPlane",
-                "material": {
-                    "diffuse": [
-                        1,
-                        1,
-                        1
-                    ],
-                    "ambient": [
-                        0.3,
-                        0.3,
-                        0.3
-                    ],
-                    "specular": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "n": 10.000002,
-                    "shaderType": 3,
-                    "alpha": 1
-                },
-                "type": "plane",
-                "position": [
-                    0,
-                    -0.5,
-                    0
-                ],
-                "scale": [
-                    16,
-                    1,
-                    16
-                ],
-                "diffuseTexture": "default.jpg",
-                "normalTexture": "defaultNorm.jpg",
-                "rotation": [
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "parent": null,
-                "model": null
+[{
+    "objects": [{
+            "name": "myPlane",
+            "material": {
+                "diffuse": [1, 1, 1],
+                "ambient": [0.3, 0.3, 0.3],
+                "specular": [0.5, 0.5, 0.5],
+                "n": 10.000002,
+                "shaderType": 3,
+                "alpha": 0.25
             },
-            {
-                "name": "myCube",
-                "material": {
-                    "diffuse": [
-                        0,
-                        0.2,
-                        1
-                    ],
-                    "ambient": [
-                        0.3,
-                        0.3,
-                        0.3
-                    ],
-                    "specular": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "n": 10.000002,
-                    "shaderType": 1,
-                    "alpha": 1
-                },
-                "type": "cube",
-                "position": [
-                    3.5,
-                    0,
-                    -3.5
-                ],
-                "scale": [
-                    1,
-                    1,
-                    1
-                ],
-                "diffuseTexture": "default.jpg",
-                "normalTexture": "defaultNorm.jpg",
-                "rotation": [
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "parent": null,
-                "model": null
+            "type": "plane",
+            "position": [0, -0.5, 0],
+            "scale": [16, 1, 16],
+            "diffuseTexture": "default.jpg",
+            "normalTexture": "defaultNorm.jpg",
+            "rotation": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
+            "parent": null,
+            "model": null
+        },
+        {
+            "name": "myCube",
+            "material": {
+                "diffuse": [0, 0, 0.5],
+                "ambient": [0.33, 0.32, 0.73],
+                "specular": [0.15, 0.25, 0.95],
+                "n": 10.000002,
+                "shaderType": 3,
+                "alpha": 1
             },
-            {
-                "name": "myNPC",
-                "material": {
-                    "diffuse": [
-                        1,
-                        0,
-                        0
-                    ],
-                    "ambient": [
-                        0.3,
-                        0.3,
-                        0.3
-                    ],
-                    "specular": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "n": 10.000002,
-                    "shaderType": 1,
-                    "alpha": 1
-                },
-                "type": "cube",
-                "position": [
-                    0,
-                    0,
-                    0
-                ],
-                "scale": [
-                    1,
-                    1,
-                    1
-                ],
-                "diffuseTexture": "default.jpg",
-                "normalTexture": "defaultNorm.jpg",
-                "rotation": [
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "parent": null,
-                "model": null
+            "type": "cube",
+            "position": [3.5, 0, -3.5],
+            "scale": [1, 1, 1],
+            "diffuseTexture": "alien.jpg",
+            "normalTexture": "defaultNorm.png",
+            "rotation": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
+            "parent": null,
+            "model": null
+        },
+        {
+            "name": "myNPC",
+            "material": {
+                "diffuse": [1, 0, 0],
+                "ambient": [0.3,0.3,0.3],
+                "specular": [0.25, 0.5, 0.75],
+                "n": 10,
+                "shaderType": 3,
+                "alpha": 1
             },
-            {
-                "name": "myWall5",
-                "material": {
-                    "diffuse": [
-                        0.5882,
-                        0.5882,
-                        0.5882
-                    ],
-                    "ambient": [
-                        0.3,
-                        0.3,
-                        0.3
-                    ],
-                    "specular": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "n": 10.000002,
-                    "shaderType": 3,
-                    "alpha": 1
-                },
-                "type": "cube",
-                "position": [
-                    3.5,
-                    0,
-                    -2
+            "type": "cube",
+            "position": [0,0,0],
+            "scale": [1,1,1],
+            "diffuseTexture": "alien.jpg",
+            "normalTexture": "defaultNorm.jpg",
+            "rotation": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "parent": null,
+            "model": null
+        },
+        {
+            "name": "myWall5",
+            "material": {
+                "diffuse": [
+                    0.5882,
+                    0.5882,
+                    0.5882
                 ],
-                "scale": [
-                    2,
-                    1,
-                    1
+                "ambient": [
+                    0.3,
+                    0.3,
+                    0.3
                 ],
-                "diffuseTexture": "default.jpg",
-                "normalTexture": "defaultNorm.jpg",
-                "rotation": [
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "parent": null,
-                "model": null
-            },
-            {
-                "name": "myWall6",
-                "material": {
-                    "diffuse": [
-                        0.5882,
-                        0.5882,
-                        0.5882
-                    ],
-                    "ambient": [
-                        0.3,
-                        0.3,
-                        0.3
-                    ],
-                    "specular": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "n": 10.000002,
-                    "shaderType": 3,
-                    "alpha": 1
-                },
-                "type": "cube",
-                "position": [
-                    2.5,
-                    0,
-                    -2
-                ],
-                "scale": [
-                    2,
-                    1,
-                    1
-                ],
-                "diffuseTexture": "default.jpg",
-                "normalTexture": "defaultNorm.jpg",
-                "rotation": [
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "parent": null,
-                "model": null
-            },
-            {
-                "name": "myWall7",
-                "material": {
-                    "diffuse": [
-                        0.5882,
-                        0.5882,
-                        0.5882
-                    ],
-                    "ambient": [
-                        0.3,
-                        0.3,
-                        0.3
-                    ],
-                    "specular": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "n": 10.000002,
-                    "shaderType": 3,
-                    "alpha": 1
-                },
-                "type": "cube",
-                "position": [
-                    1.5,
-                    0,
-                    -2
-                ],
-                "scale": [
-                    2,
-                    1,
-                    1
-                ],
-                "diffuseTexture": "default.jpg",
-                "normalTexture": "defaultNorm.jpg",
-                "rotation": [
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "parent": null,
-                "model": null
-            },
-            {
-                "name": "myWall8",
-                "material": {
-                    "diffuse": [
-                        0.5882,
-                        0.5882,
-                        0.5882
-                    ],
-                    "ambient": [
-                        0.3,
-                        0.3,
-                        0.3
-                    ],
-                    "specular": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "n": 10.000002,
-                    "shaderType": 3,
-                    "alpha": 1
-                },
-                "type": "cube",
-                "position": [
-                    -1.5,
-                    0,
-                    1.5
-                ],
-                "scale": [
-                    2,
-                    1,
-                    1
-                ],
-                "diffuseTexture": "default.jpg",
-                "normalTexture": "defaultNorm.jpg",
-                "rotation": [
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "parent": null,
-                "model": null
-            },
-            {
-                "name": "myWall9",
-                "material": {
-                    "diffuse": [
-                        0.5882,
-                        0.5882,
-                        0.5882
-                    ],
-                    "ambient": [
-                        0.3,
-                        0.3,
-                        0.3
-                    ],
-                    "specular": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "n": 10.000002,
-                    "shaderType": 3,
-                    "alpha": 1
-                },
-                "type": "cube",
-                "position": [
-                    -2.5,
-                    0,
-                    1.5
-                ],
-                "scale": [
-                    2,
-                    1,
-                    1
-                ],
-                "diffuseTexture": "default.jpg",
-                "normalTexture": "defaultNorm.jpg",
-                "rotation": [
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "parent": null,
-                "model": null
-            },
-            {
-                "name": "myWall10",
-                "material": {
-                    "diffuse": [
-                        0.5882,
-                        0.5882,
-                        0.5882
-                    ],
-                    "ambient": [
-                        0.3,
-                        0.3,
-                        0.3
-                    ],
-                    "specular": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "n": 10.000002,
-                    "shaderType": 3,
-                    "alpha": 1
-                },
-                "type": "cube",
-                "position": [
-                    -3.5,
-                    0,
-                    1.5
-                ],
-                "scale": [
-                    2,
-                    1,
-                    1
-                ],
-                "diffuseTexture": "default.jpg",
-                "normalTexture": "defaultNorm.jpg",
-                "rotation": [
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "parent": null,
-                "model": null
-            },
-            {
-                "name": "myWall1",
-                "material": {
-                    "diffuse": [
-                        0.5882,
-                        0.5882,
-                        0.5882
-                    ],
-                    "ambient": [
-                        0.3,
-                        0.3,
-                        0.3
-                    ],
-                    "specular": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "n": 10.000002,
-                    "shaderType": 3,
-                    "alpha": 1
-                },
-                "type": "cube",
-                "position": [
-                    2.5,
-                    0,
-                    -4
-                ],
-                "scale": [
-                    2,
-                    1,
-                    1
-                ],
-                "diffuseTexture": "default.jpg",
-                "normalTexture": "defaultNorm.jpg",
-                "rotation": [
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "parent": null,
-                "model": null
-            },
-            {
-                "name": "myWall2",
-                "material": {
-                    "diffuse": [
-                        0.5882,
-                        0.5882,
-                        0.5882
-                    ],
-                    "ambient": [
-                        0.3,
-                        0.3,
-                        0.3
-                    ],
-                    "specular": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "n": 10.000002,
-                    "shaderType": 3,
-                    "alpha": 1
-                },
-                "type": "cube",
-                "position": [
-                    1.5,
-                    0,
-                    -4
-                ],
-                "scale": [
-                    2,
-                    1,
-                    1
-                ],
-                "diffuseTexture": "default.jpg",
-                "normalTexture": "defaultNorm.jpg",
-                "rotation": [
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "parent": null,
-                "model": null
-            },
-            {
-                "name": "myWall3",
-                "material": {
-                    "diffuse": [
-                        0.5882,
-                        0.5882,
-                        0.5882
-                    ],
-                    "ambient": [
-                        0.3,
-                        0.3,
-                        0.3
-                    ],
-                    "specular": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "n": 10.000002,
-                    "shaderType": 3,
-                    "alpha": 1
-                },
-                "type": "cube",
-                "position": [
+                "specular": [
                     0.5,
-                    0,
-                    -4
-                ],
-                "scale": [
-                    2,
-                    1,
-                    1
-                ],
-                "diffuseTexture": "default.jpg",
-                "normalTexture": "defaultNorm.jpg",
-                "rotation": [
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "parent": null,
-                "model": null
-            },
-            {
-                "name": "myWall4",
-                "material": {
-                    "diffuse": [
-                        0.5882,
-                        0.5882,
-                        0.5882
-                    ],
-                    "ambient": [
-                        0.3,
-                        0.3,
-                        0.3
-                    ],
-                    "specular": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "n": 10.000002,
-                    "shaderType": 3,
-                    "alpha": 1
-                },
-                "type": "cube",
-                "position": [
-                    -0.5,
-                    0,
-                    -4
-                ],
-                "scale": [
-                    2,
-                    1,
-                    1
-                ],
-                "diffuseTexture": "default.jpg",
-                "normalTexture": "defaultNorm.jpg",
-                "rotation": [
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "parent": null,
-                "model": null
-            },
-            {
-                "name": "myWall11",
-                "material": {
-                    "diffuse": [
-                        0.5882,
-                        0.5882,
-                        0.5882
-                    ],
-                    "ambient": [
-                        0.3,
-                        0.3,
-                        0.3
-                    ],
-                    "specular": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "n": 10.000002,
-                    "shaderType": 3,
-                    "alpha": 1
-                },
-                "type": "cube",
-                "position": [
-                    -1.5,
-                    0,
-                    -4
-                ],
-                "scale": [
-                    2,
-                    1,
-                    1
-                ],
-                "diffuseTexture": "default.jpg",
-                "normalTexture": "defaultNorm.jpg",
-                "rotation": [
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "parent": null,
-                "model": null
-            },
-            {
-                "name": "myWall12",
-                "material": {
-                    "diffuse": [
-                        0.5882,
-                        0.5882,
-                        0.5882
-                    ],
-                    "ambient": [
-                        0.3,
-                        0.3,
-                        0.3
-                    ],
-                    "specular": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "n": 10.000002,
-                    "shaderType": 3,
-                    "alpha": 1
-                },
-                "type": "cube",
-                "position": [
-                    -2.5,
-                    0,
-                    -4
-                ],
-                "scale": [
-                    2,
-                    1,
-                    1
-                ],
-                "diffuseTexture": "default.jpg",
-                "normalTexture": "defaultNorm.jpg",
-                "rotation": [
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "parent": null,
-                "model": null
-            },
-            {
-                "name": "myWall13",
-                "material": {
-                    "diffuse": [
-                        0.5882,
-                        0.5882,
-                        0.5882
-                    ],
-                    "ambient": [
-                        0.3,
-                        0.3,
-                        0.3
-                    ],
-                    "specular": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "n": 10.000002,
-                    "shaderType": 3,
-                    "alpha": 1
-                },
-                "type": "cube",
-                "position": [
-                    -3.5,
-                    0,
-                    -4
-                ],
-                "scale": [
-                    2,
-                    1,
-                    1
-                ],
-                "diffuseTexture": "default.jpg",
-                "normalTexture": "defaultNorm.jpg",
-                "rotation": [
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "parent": null,
-                "model": null
-            },
-            {
-                "name": "myWallE1",
-                "material": {
-                    "diffuse": [
-                        0.5882,
-                        0.5882,
-                        0.5882
-                    ],
-                    "ambient": [
-                        0.3,
-                        0.3,
-                        0.3
-                    ],
-                    "specular": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "n": 10.000002,
-                    "shaderType": 3,
-                    "alpha": 1
-                },
-                "type": "cube",
-                "position": [
-                    -4,
-                    0,
-                    -3.5
-                ],
-                "scale": [
-                    1,
-                    1,
-                    2
-                ],
-                "diffuseTexture": "default.jpg",
-                "normalTexture": "defaultNorm.jpg",
-                "rotation": [
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "parent": null,
-                "model": null
-            },
-            {
-                "name": "myWallE2",
-                "material": {
-                    "diffuse": [
-                        0.5882,
-                        0.5882,
-                        0.5882
-                    ],
-                    "ambient": [
-                        0.3,
-                        0.3,
-                        0.3
-                    ],
-                    "specular": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "n": 10.000002,
-                    "shaderType": 3,
-                    "alpha": 1
-                },
-                "type": "cube",
-                "position": [
-                    -4,
-                    0,
-                    -2.5
-                ],
-                "scale": [
-                    1,
-                    1,
-                    2
-                ],
-                "diffuseTexture": "default.jpg",
-                "normalTexture": "defaultNorm.jpg",
-                "rotation": [
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "parent": null,
-                "model": null
-            },
-            {
-                "name": "myWallE3",
-                "material": {
-                    "diffuse": [
-                        0.5882,
-                        0.5882,
-                        0.5882
-                    ],
-                    "ambient": [
-                        0.3,
-                        0.3,
-                        0.3
-                    ],
-                    "specular": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "n": 10.000002,
-                    "shaderType": 3,
-                    "alpha": 1
-                },
-                "type": "cube",
-                "position": [
-                    -4,
-                    0,
-                    -1.5
-                ],
-                "scale": [
-                    1,
-                    1,
-                    2
-                ],
-                "diffuseTexture": "default.jpg",
-                "normalTexture": "defaultNorm.jpg",
-                "rotation": [
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "parent": null,
-                "model": null
-            },
-            {
-                "name": "myWallE4",
-                "material": {
-                    "diffuse": [
-                        0.5882,
-                        0.5882,
-                        0.5882
-                    ],
-                    "ambient": [
-                        0.3,
-                        0.3,
-                        0.3
-                    ],
-                    "specular": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "n": 10.000002,
-                    "shaderType": 3,
-                    "alpha": 1
-                },
-                "type": "cube",
-                "position": [
-                    -4,
-                    0,
-                    -0.5
-                ],
-                "scale": [
-                    1,
-                    1,
-                    2
-                ],
-                "diffuseTexture": "default.jpg",
-                "normalTexture": "defaultNorm.jpg",
-                "rotation": [
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "parent": null,
-                "model": null
-            },
-            {
-                "name": "myWallE5",
-                "material": {
-                    "diffuse": [
-                        0.5882,
-                        0.5882,
-                        0.5882
-                    ],
-                    "ambient": [
-                        0.3,
-                        0.3,
-                        0.3
-                    ],
-                    "specular": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "n": 10.000002,
-                    "shaderType": 3,
-                    "alpha": 1
-                },
-                "type": "cube",
-                "position": [
-                    -4,
-                    0,
+                    0.5,
                     0.5
                 ],
-                "scale": [
-                    1,
-                    1,
-                    2
-                ],
-                "diffuseTexture": "default.jpg",
-                "normalTexture": "defaultNorm.jpg",
-                "rotation": [
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "parent": null,
-                "model": null
+                "n": 10.000002,
+                "shaderType": 3,
+                "alpha": 1
             },
-            {
-                "name": "myWallE6",
-                "material": {
-                    "diffuse": [
-                        0.5882,
-                        0.5882,
-                        0.5882
-                    ],
-                    "ambient": [
-                        0.3,
-                        0.3,
-                        0.3
-                    ],
-                    "specular": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "n": 10.000002,
-                    "shaderType": 3,
-                    "alpha": 1
-                },
-                "type": "cube",
-                "position": [
-                    -4,
-                    0,
-                    1
-                ],
-                "scale": [
-                    1,
-                    1,
-                    1
-                ],
-                "diffuseTexture": "default.jpg",
-                "normalTexture": "defaultNorm.jpg",
-                "rotation": [
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "parent": null,
-                "model": null
-            },
-            {
-                "name": "myWallE7",
-                "material": {
-                    "diffuse": [
-                        0.5882,
-                        0.5882,
-                        0.5882
-                    ],
-                    "ambient": [
-                        0.3,
-                        0.3,
-                        0.3
-                    ],
-                    "specular": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "n": 10.000002,
-                    "shaderType": 3,
-                    "alpha": 1
-                },
-                "type": "cube",
-                "position": [
-                    -4,
-                    0,
-                    2.5
-                ],
-                "scale": [
-                    1,
-                    1,
-                    2
-                ],
-                "diffuseTexture": "default.jpg",
-                "normalTexture": "defaultNorm.jpg",
-                "rotation": [
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "parent": null,
-                "model": null
-            },
-            {
-                "name": "myWallE8",
-                "material": {
-                    "diffuse": [
-                        0.5882,
-                        0.5882,
-                        0.5882
-                    ],
-                    "ambient": [
-                        0.3,
-                        0.3,
-                        0.3
-                    ],
-                    "specular": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "n": 10.000002,
-                    "shaderType": 3,
-                    "alpha": 1
-                },
-                "type": "cube",
-                "position": [
-                    -4,
-                    0,
-                    3.5
-                ],
-                "scale": [
-                    1,
-                    1,
-                    2
-                ],
-                "diffuseTexture": "default.jpg",
-                "normalTexture": "defaultNorm.jpg",
-                "rotation": [
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "parent": null,
-                "model": null
-            },
-            {
-                "name": "myWallN1",
-                "material": {
-                    "diffuse": [
-                        0.5882,
-                        0.5882,
-                        0.5882
-                    ],
-                    "ambient": [
-                        0.3,
-                        0.3,
-                        0.3
-                    ],
-                    "specular": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "n": 10.000002,
-                    "shaderType": 3,
-                    "alpha": 1
-                },
-                "type": "cube",
-                "position": [
-                    -2,
-                    0,
-                    4
-                ],
-                "scale": [
-                    2,
-                    1,
-                    1
-                ],
-                "diffuseTexture": "default.jpg",
-                "normalTexture": "defaultNorm.jpg",
-                "rotation": [
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "parent": null,
-                "model": null
-            },
-            {
-                "name": "myWallN2",
-                "material": {
-                    "diffuse": [
-                        0.5882,
-                        0.5882,
-                        0.5882
-                    ],
-                    "ambient": [
-                        0.3,
-                        0.3,
-                        0.3
-                    ],
-                    "specular": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "n": 10.000002,
-                    "shaderType": 3,
-                    "alpha": 1
-                },
-                "type": "cube",
-                "position": [
-                    -1,
-                    0,
-                    4
-                ],
-                "scale": [
-                    2,
-                    1,
-                    1
-                ],
-                "diffuseTexture": "default.jpg",
-                "normalTexture": "defaultNorm.jpg",
-                "rotation": [
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "parent": null,
-                "model": null
-            },
-            {
-                "name": "myWallN3",
-                "material": {
-                    "diffuse": [
-                        0.5882,
-                        0.5882,
-                        0.5882
-                    ],
-                    "ambient": [
-                        0.3,
-                        0.3,
-                        0.3
-                    ],
-                    "specular": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "n": 10.000002,
-                    "shaderType": 3,
-                    "alpha": 1
-                },
-                "type": "cube",
-                "position": [
-                    0,
-                    0,
-                    4
-                ],
-                "scale": [
-                    2,
-                    1,
-                    1
-                ],
-                "diffuseTexture": "default.jpg",
-                "normalTexture": "defaultNorm.jpg",
-                "rotation": [
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "parent": null,
-                "model": null
-            },
-            {
-                "name": "myWallN4",
-                "material": {
-                    "diffuse": [
-                        0.5882,
-                        0.5882,
-                        0.5882
-                    ],
-                    "ambient": [
-                        0.3,
-                        0.3,
-                        0.3
-                    ],
-                    "specular": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "n": 10.000002,
-                    "shaderType": 3,
-                    "alpha": 1
-                },
-                "type": "cube",
-                "position": [
-                    1,
-                    0,
-                    4
-                ],
-                "scale": [
-                    2,
-                    1,
-                    1
-                ],
-                "diffuseTexture": "default.jpg",
-                "normalTexture": "defaultNorm.jpg",
-                "rotation": [
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "parent": null,
-                "model": null
-            },
-            {
-                "name": "myWallN5",
-                "material": {
-                    "diffuse": [
-                        0.5882,
-                        0.5882,
-                        0.5882
-                    ],
-                    "ambient": [
-                        0.3,
-                        0.3,
-                        0.3
-                    ],
-                    "specular": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "n": 10.000002,
-                    "shaderType": 3,
-                    "alpha": 1
-                },
-                "type": "cube",
-                "position": [
-                    2,
-                    0,
-                    4
-                ],
-                "scale": [
-                    2,
-                    1,
-                    1
-                ],
-                "diffuseTexture": "default.jpg",
-                "normalTexture": "defaultNorm.jpg",
-                "rotation": [
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "parent": null,
-                "model": null
-            },
-            {
-                "name": "myWallN6",
-                "material": {
-                    "diffuse": [
-                        0.5882,
-                        0.5882,
-                        0.5882
-                    ],
-                    "ambient": [
-                        0.3,
-                        0.3,
-                        0.3
-                    ],
-                    "specular": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "n": 10.000002,
-                    "shaderType": 3,
-                    "alpha": 1
-                },
-                "type": "cube",
-                "position": [
-                    3,
-                    0,
-                    4
-                ],
-                "scale": [
-                    2,
-                    1,
-                    1
-                ],
-                "diffuseTexture": "default.jpg",
-                "normalTexture": "defaultNorm.jpg",
-                "rotation": [
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "parent": null,
-                "model": null
-            },
-            {
-                "name": "myWallW1",
-                "material": {
-                    "diffuse": [
-                        0.5882,
-                        0.5882,
-                        0.5882
-                    ],
-                    "ambient": [
-                        0.3,
-                        0.3,
-                        0.3
-                    ],
-                    "specular": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "n": 10.000002,
-                    "shaderType": 3,
-                    "alpha": 1
-                },
-                "type": "cube",
-                "position": [
-                    4,
-                    0,
-                    3
-                ],
-                "scale": [
-                    1,
-                    1,
-                    2
-                ],
-                "diffuseTexture": "default.jpg",
-                "normalTexture": "defaultNorm.jpg",
-                "rotation": [
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "parent": null,
-                "model": null
-            },
-            {
-                "name": "myWallN7",
-                "material": {
-                    "diffuse": [
-                        0.5882,
-                        0.5882,
-                        0.5882
-                    ],
-                    "ambient": [
-                        0.3,
-                        0.3,
-                        0.3
-                    ],
-                    "specular": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "n": 10.000002,
-                    "shaderType": 3,
-                    "alpha": 1
-                },
-                "type": "cube",
-                "position": [
-                    4,
-                    0,
-                    4
-                ],
-                "scale": [
-                    2,
-                    1,
-                    1
-                ],
-                "diffuseTexture": "default.jpg",
-                "normalTexture": "defaultNorm.jpg",
-                "rotation": [
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "parent": null,
-                "model": null
-            },
-            {
-                "name": "myWallW2",
-                "material": {
-                    "diffuse": [
-                        0.5882,
-                        0.5882,
-                        0.5882
-                    ],
-                    "ambient": [
-                        0.3,
-                        0.3,
-                        0.3
-                    ],
-                    "specular": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "n": 10.000002,
-                    "shaderType": 3,
-                    "alpha": 1
-                },
-                "type": "cube",
-                "position": [
-                    4,
-                    0,
-                    2
-                ],
-                "scale": [
-                    1,
-                    1,
-                    2
-                ],
-                "diffuseTexture": "default.jpg",
-                "normalTexture": "defaultNorm.jpg",
-                "rotation": [
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "parent": null,
-                "model": null
-            },
-            {
-                "name": "myWallW3",
-                "material": {
-                    "diffuse": [
-                        0.5882,
-                        0.5882,
-                        0.5882
-                    ],
-                    "ambient": [
-                        0.3,
-                        0.3,
-                        0.3
-                    ],
-                    "specular": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "n": 10.000002,
-                    "shaderType": 3,
-                    "alpha": 1
-                },
-                "type": "cube",
-                "position": [
-                    4,
-                    0,
-                    1
-                ],
-                "scale": [
-                    1,
-                    1,
-                    2
-                ],
-                "diffuseTexture": "default.jpg",
-                "normalTexture": "defaultNorm.jpg",
-                "rotation": [
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "parent": null,
-                "model": null
-            },
-            {
-                "name": "myWallW4",
-                "material": {
-                    "diffuse": [
-                        0.5882,
-                        0.5882,
-                        0.5882
-                    ],
-                    "ambient": [
-                        0.3,
-                        0.3,
-                        0.3
-                    ],
-                    "specular": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "n": 10.000002,
-                    "shaderType": 3,
-                    "alpha": 1
-                },
-                "type": "cube",
-                "position": [
-                    4,
-                    0,
-                    0
-                ],
-                "scale": [
-                    1,
-                    1,
-                    2
-                ],
-                "diffuseTexture": "default.jpg",
-                "normalTexture": "defaultNorm.jpg",
-                "rotation": [
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "parent": null,
-                "model": null
-            },
-            {
-                "name": "myWallW5",
-                "material": {
-                    "diffuse": [
-                        0.5882,
-                        0.5882,
-                        0.5882
-                    ],
-                    "ambient": [
-                        0.3,
-                        0.3,
-                        0.3
-                    ],
-                    "specular": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "n": 10.000002,
-                    "shaderType": 3,
-                    "alpha": 1
-                },
-                "type": "cube",
-                "position": [
-                    4,
-                    0,
-                    -1
-                ],
-                "scale": [
-                    1,
-                    1,
-                    2
-                ],
-                "diffuseTexture": "default.jpg",
-                "normalTexture": "defaultNorm.jpg",
-                "rotation": [
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "parent": null,
-                "model": null
-            },
-            {
-                "name": "myWallW6",
-                "material": {
-                    "diffuse": [
-                        0.5882,
-                        0.5882,
-                        0.5882
-                    ],
-                    "ambient": [
-                        0.3,
-                        0.3,
-                        0.3
-                    ],
-                    "specular": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "n": 10.000002,
-                    "shaderType": 3,
-                    "alpha": 1
-                },
-                "type": "cube",
-                "position": [
-                    4,
-                    0,
-                    -2.5
-                ],
-                "scale": [
-                    1,
-                    1,
-                    2
-                ],
-                "diffuseTexture": "default.jpg",
-                "normalTexture": "defaultNorm.jpg",
-                "rotation": [
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "parent": null,
-                "model": null
-            }
-        ],
-        "pointLights": [
-            {
-                "name": "pointLight1",
-                "colour": [
-                    1,
-                    1,
-                    1
-                ],
-                "position": [
-                    0,
-                    5,
-                    0
-                ],
-                "strength": 2,
-                "quadratic": 0.035,
-                "linear": 0.09,
-                "constant": 1,
-                "nearPlane": 0.5,
-                "farPlane": 100,
-                "shadow": 0
-            }
-        ],
-        "settings": {
-            "backgroundColor": [
+            "type": "cube",
+            "position": [
+                3.5,
                 0,
+                -2
+            ],
+            "scale": [
+                2,
+                1,
+                1
+            ],
+            "diffuseTexture": "default.jpg",
+            "normalTexture": "defaultNorm.jpg",
+            "rotation": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "parent": null,
+            "model": null
+        },
+        {
+            "name": "myWall6",
+            "material": {
+                "diffuse": [
+                    0.5882,
+                    0.5882,
+                    0.5882
+                ],
+                "ambient": [
+                    0.3,
+                    0.3,
+                    0.3
+                ],
+                "specular": [
+                    0.5,
+                    0.5,
+                    0.5
+                ],
+                "n": 10.000002,
+                "shaderType": 3,
+                "alpha": 1
+            },
+            "type": "cube",
+            "position": [
+                2.5,
+                0,
+                -2
+            ],
+            "scale": [
+                2,
+                1,
+                1
+            ],
+            "diffuseTexture": "default.jpg",
+            "normalTexture": "defaultNorm.jpg",
+            "rotation": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "parent": null,
+            "model": null
+        },
+        {
+            "name": "myWall7",
+            "material": {
+                "diffuse": [
+                    0.5882,
+                    0.5882,
+                    0.5882
+                ],
+                "ambient": [
+                    0.3,
+                    0.3,
+                    0.3
+                ],
+                "specular": [
+                    0.5,
+                    0.5,
+                    0.5
+                ],
+                "n": 10.000002,
+                "shaderType": 3,
+                "alpha": 1
+            },
+            "type": "cube",
+            "position": [
+                1.5,
+                0,
+                -2
+            ],
+            "scale": [
+                2,
+                1,
+                1
+            ],
+            "diffuseTexture": "default.jpg",
+            "normalTexture": "defaultNorm.jpg",
+            "rotation": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "parent": null,
+            "model": null
+        },
+        {
+            "name": "myWall8",
+            "material": {
+                "diffuse": [
+                    0.5882,
+                    0.5882,
+                    0.5882
+                ],
+                "ambient": [
+                    0.3,
+                    0.3,
+                    0.3
+                ],
+                "specular": [
+                    0.5,
+                    0.5,
+                    0.5
+                ],
+                "n": 10.000002,
+                "shaderType": 3,
+                "alpha": 1
+            },
+            "type": "cube",
+            "position": [
+                -1.5,
+                0,
+                1.5
+            ],
+            "scale": [
+                2,
+                1,
+                1
+            ],
+            "diffuseTexture": "default.jpg",
+            "normalTexture": "defaultNorm.jpg",
+            "rotation": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "parent": null,
+            "model": null
+        },
+        {
+            "name": "myWall9",
+            "material": {
+                "diffuse": [
+                    0.5882,
+                    0.5882,
+                    0.5882
+                ],
+                "ambient": [
+                    0.3,
+                    0.3,
+                    0.3
+                ],
+                "specular": [
+                    0.5,
+                    0.5,
+                    0.5
+                ],
+                "n": 10.000002,
+                "shaderType": 3,
+                "alpha": 1
+            },
+            "type": "cube",
+            "position": [
+                -2.5,
+                0,
+                1.5
+            ],
+            "scale": [
+                2,
+                1,
+                1
+            ],
+            "diffuseTexture": "default.jpg",
+            "normalTexture": "defaultNorm.jpg",
+            "rotation": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "parent": null,
+            "model": null
+        },
+        {
+            "name": "myWall10",
+            "material": {
+                "diffuse": [
+                    0.5882,
+                    0.5882,
+                    0.5882
+                ],
+                "ambient": [
+                    0.3,
+                    0.3,
+                    0.3
+                ],
+                "specular": [
+                    0.5,
+                    0.5,
+                    0.5
+                ],
+                "n": 10.000002,
+                "shaderType": 3,
+                "alpha": 1
+            },
+            "type": "cube",
+            "position": [
+                -3.5,
+                0,
+                1.5
+            ],
+            "scale": [
+                2,
+                1,
+                1
+            ],
+            "diffuseTexture": "default.jpg",
+            "normalTexture": "defaultNorm.jpg",
+            "rotation": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "parent": null,
+            "model": null
+        },
+        {
+            "name": "myWall1",
+            "material": {
+                "diffuse": [
+                    0.5882,
+                    0.5882,
+                    0.5882
+                ],
+                "ambient": [
+                    0.3,
+                    0.3,
+                    0.3
+                ],
+                "specular": [
+                    0.5,
+                    0.5,
+                    0.5
+                ],
+                "n": 10.000002,
+                "shaderType": 3,
+                "alpha": 1
+            },
+            "type": "cube",
+            "position": [
+                2.5,
+                0,
+                -4
+            ],
+            "scale": [
+                2,
+                1,
+                1
+            ],
+            "diffuseTexture": "default.jpg",
+            "normalTexture": "defaultNorm.jpg",
+            "rotation": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "parent": null,
+            "model": null
+        },
+        {
+            "name": "myWall2",
+            "material": {
+                "diffuse": [
+                    0.5882,
+                    0.5882,
+                    0.5882
+                ],
+                "ambient": [
+                    0.3,
+                    0.3,
+                    0.3
+                ],
+                "specular": [
+                    0.5,
+                    0.5,
+                    0.5
+                ],
+                "n": 10.000002,
+                "shaderType": 3,
+                "alpha": 1
+            },
+            "type": "cube",
+            "position": [
+                1.5,
+                0,
+                -4
+            ],
+            "scale": [
+                2,
+                1,
+                1
+            ],
+            "diffuseTexture": "default.jpg",
+            "normalTexture": "defaultNorm.jpg",
+            "rotation": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "parent": null,
+            "model": null
+        },
+        {
+            "name": "myWall3",
+            "material": {
+                "diffuse": [
+                    0.5882,
+                    0.5882,
+                    0.5882
+                ],
+                "ambient": [
+                    0.3,
+                    0.3,
+                    0.3
+                ],
+                "specular": [
+                    0.5,
+                    0.5,
+                    0.5
+                ],
+                "n": 10.000002,
+                "shaderType": 3,
+                "alpha": 1
+            },
+            "type": "cube",
+            "position": [
+                0.5,
+                0,
+                -4
+            ],
+            "scale": [
+                2,
+                1,
+                1
+            ],
+            "diffuseTexture": "default.jpg",
+            "normalTexture": "defaultNorm.jpg",
+            "rotation": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "parent": null,
+            "model": null
+        },
+        {
+            "name": "myWall4",
+            "material": {
+                "diffuse": [
+                    0.5882,
+                    0.5882,
+                    0.5882
+                ],
+                "ambient": [
+                    0.3,
+                    0.3,
+                    0.3
+                ],
+                "specular": [
+                    0.5,
+                    0.5,
+                    0.5
+                ],
+                "n": 10.000002,
+                "shaderType": 3,
+                "alpha": 1
+            },
+            "type": "cube",
+            "position": [
+                -0.5,
+                0,
+                -4
+            ],
+            "scale": [
+                2,
+                1,
+                1
+            ],
+            "diffuseTexture": "default.jpg",
+            "normalTexture": "defaultNorm.jpg",
+            "rotation": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "parent": null,
+            "model": null
+        },
+        {
+            "name": "myWall11",
+            "material": {
+                "diffuse": [
+                    0.5882,
+                    0.5882,
+                    0.5882
+                ],
+                "ambient": [
+                    0.3,
+                    0.3,
+                    0.3
+                ],
+                "specular": [
+                    0.5,
+                    0.5,
+                    0.5
+                ],
+                "n": 10.000002,
+                "shaderType": 3,
+                "alpha": 1
+            },
+            "type": "cube",
+            "position": [
+                -1.5,
+                0,
+                -4
+            ],
+            "scale": [
+                2,
+                1,
+                1
+            ],
+            "diffuseTexture": "default.jpg",
+            "normalTexture": "defaultNorm.jpg",
+            "rotation": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "parent": null,
+            "model": null
+        },
+        {
+            "name": "myWall12",
+            "material": {
+                "diffuse": [
+                    0.5882,
+                    0.5882,
+                    0.5882
+                ],
+                "ambient": [
+                    0.3,
+                    0.3,
+                    0.3
+                ],
+                "specular": [
+                    0.5,
+                    0.5,
+                    0.5
+                ],
+                "n": 10.000002,
+                "shaderType": 3,
+                "alpha": 1
+            },
+            "type": "cube",
+            "position": [
+                -2.5,
+                0,
+                -4
+            ],
+            "scale": [
+                2,
+                1,
+                1
+            ],
+            "diffuseTexture": "default.jpg",
+            "normalTexture": "defaultNorm.jpg",
+            "rotation": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "parent": null,
+            "model": null
+        },
+        {
+            "name": "myWall13",
+            "material": {
+                "diffuse": [
+                    0.5882,
+                    0.5882,
+                    0.5882
+                ],
+                "ambient": [
+                    0.3,
+                    0.3,
+                    0.3
+                ],
+                "specular": [
+                    0.5,
+                    0.5,
+                    0.5
+                ],
+                "n": 10.000002,
+                "shaderType": 3,
+                "alpha": 1
+            },
+            "type": "cube",
+            "position": [
+                -3.5,
+                0,
+                -4
+            ],
+            "scale": [
+                2,
+                1,
+                1
+            ],
+            "diffuseTexture": "default.jpg",
+            "normalTexture": "defaultNorm.jpg",
+            "rotation": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "parent": null,
+            "model": null
+        },
+        {
+            "name": "myWallE1",
+            "material": {
+                "diffuse": [
+                    0.5882,
+                    0.5882,
+                    0.5882
+                ],
+                "ambient": [
+                    0.3,
+                    0.3,
+                    0.3
+                ],
+                "specular": [
+                    0.5,
+                    0.5,
+                    0.5
+                ],
+                "n": 10.000002,
+                "shaderType": 3,
+                "alpha": 1
+            },
+            "type": "cube",
+            "position": [
+                -4,
+                0,
+                -3.5
+            ],
+            "scale": [
+                1,
+                1,
+                2
+            ],
+            "diffuseTexture": "default.jpg",
+            "normalTexture": "defaultNorm.jpg",
+            "rotation": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "parent": null,
+            "model": null
+        },
+        {
+            "name": "myWallE2",
+            "material": {
+                "diffuse": [
+                    0.5882,
+                    0.5882,
+                    0.5882
+                ],
+                "ambient": [
+                    0.3,
+                    0.3,
+                    0.3
+                ],
+                "specular": [
+                    0.5,
+                    0.5,
+                    0.5
+                ],
+                "n": 10.000002,
+                "shaderType": 3,
+                "alpha": 1
+            },
+            "type": "cube",
+            "position": [
+                -4,
+                0,
+                -2.5
+            ],
+            "scale": [
+                1,
+                1,
+                2
+            ],
+            "diffuseTexture": "default.jpg",
+            "normalTexture": "defaultNorm.jpg",
+            "rotation": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "parent": null,
+            "model": null
+        },
+        {
+            "name": "myWallE3",
+            "material": {
+                "diffuse": [
+                    0.5882,
+                    0.5882,
+                    0.5882
+                ],
+                "ambient": [
+                    0.3,
+                    0.3,
+                    0.3
+                ],
+                "specular": [
+                    0.5,
+                    0.5,
+                    0.5
+                ],
+                "n": 10.000002,
+                "shaderType": 3,
+                "alpha": 1
+            },
+            "type": "cube",
+            "position": [
+                -4,
+                0,
+                -1.5
+            ],
+            "scale": [
+                1,
+                1,
+                2
+            ],
+            "diffuseTexture": "default.jpg",
+            "normalTexture": "defaultNorm.jpg",
+            "rotation": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "parent": null,
+            "model": null
+        },
+        {
+            "name": "myWallE4",
+            "material": {
+                "diffuse": [
+                    0.5882,
+                    0.5882,
+                    0.5882
+                ],
+                "ambient": [
+                    0.3,
+                    0.3,
+                    0.3
+                ],
+                "specular": [
+                    0.5,
+                    0.5,
+                    0.5
+                ],
+                "n": 10.000002,
+                "shaderType": 3,
+                "alpha": 1
+            },
+            "type": "cube",
+            "position": [
+                -4,
+                0,
+                -0.5
+            ],
+            "scale": [
+                1,
+                1,
+                2
+            ],
+            "diffuseTexture": "default.jpg",
+            "normalTexture": "defaultNorm.jpg",
+            "rotation": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "parent": null,
+            "model": null
+        },
+        {
+            "name": "myWallE5",
+            "material": {
+                "diffuse": [
+                    0.5882,
+                    0.5882,
+                    0.5882
+                ],
+                "ambient": [
+                    0.3,
+                    0.3,
+                    0.3
+                ],
+                "specular": [
+                    0.5,
+                    0.5,
+                    0.5
+                ],
+                "n": 10.000002,
+                "shaderType": 3,
+                "alpha": 1
+            },
+            "type": "cube",
+            "position": [
+                -4,
+                0,
+                0.5
+            ],
+            "scale": [
+                1,
+                1,
+                2
+            ],
+            "diffuseTexture": "default.jpg",
+            "normalTexture": "defaultNorm.jpg",
+            "rotation": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "parent": null,
+            "model": null
+        },
+        {
+            "name": "myWallE6",
+            "material": {
+                "diffuse": [
+                    0.5882,
+                    0.5882,
+                    0.5882
+                ],
+                "ambient": [
+                    0.3,
+                    0.3,
+                    0.3
+                ],
+                "specular": [
+                    0.5,
+                    0.5,
+                    0.5
+                ],
+                "n": 10.000002,
+                "shaderType": 3,
+                "alpha": 1
+            },
+            "type": "cube",
+            "position": [
+                -4,
+                0,
+                1
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "diffuseTexture": "default.jpg",
+            "normalTexture": "defaultNorm.jpg",
+            "rotation": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "parent": null,
+            "model": null
+        },
+        {
+            "name": "myWallE7",
+            "material": {
+                "diffuse": [
+                    0.5882,
+                    0.5882,
+                    0.5882
+                ],
+                "ambient": [
+                    0.3,
+                    0.3,
+                    0.3
+                ],
+                "specular": [
+                    0.5,
+                    0.5,
+                    0.5
+                ],
+                "n": 10.000002,
+                "shaderType": 3,
+                "alpha": 1
+            },
+            "type": "cube",
+            "position": [
+                -4,
+                0,
+                2.5
+            ],
+            "scale": [
+                1,
+                1,
+                2
+            ],
+            "diffuseTexture": "default.jpg",
+            "normalTexture": "defaultNorm.jpg",
+            "rotation": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "parent": null,
+            "model": null
+        },
+        {
+            "name": "myWallE8",
+            "material": {
+                "diffuse": [
+                    0.5882,
+                    0.5882,
+                    0.5882
+                ],
+                "ambient": [
+                    0.3,
+                    0.3,
+                    0.3
+                ],
+                "specular": [
+                    0.5,
+                    0.5,
+                    0.5
+                ],
+                "n": 10.000002,
+                "shaderType": 3,
+                "alpha": 1
+            },
+            "type": "cube",
+            "position": [
+                -4,
+                0,
+                3.5
+            ],
+            "scale": [
+                1,
+                1,
+                2
+            ],
+            "diffuseTexture": "default.jpg",
+            "normalTexture": "defaultNorm.jpg",
+            "rotation": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "parent": null,
+            "model": null
+        },
+        {
+            "name": "myWallN1",
+            "material": {
+                "diffuse": [
+                    0.5882,
+                    0.5882,
+                    0.5882
+                ],
+                "ambient": [
+                    0.3,
+                    0.3,
+                    0.3
+                ],
+                "specular": [
+                    0.5,
+                    0.5,
+                    0.5
+                ],
+                "n": 10.000002,
+                "shaderType": 3,
+                "alpha": 1
+            },
+            "type": "cube",
+            "position": [
+                -2,
+                0,
+                4
+            ],
+            "scale": [
+                2,
+                1,
+                1
+            ],
+            "diffuseTexture": "default.jpg",
+            "normalTexture": "defaultNorm.jpg",
+            "rotation": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "parent": null,
+            "model": null
+        },
+        {
+            "name": "myWallN2",
+            "material": {
+                "diffuse": [
+                    0.5882,
+                    0.5882,
+                    0.5882
+                ],
+                "ambient": [
+                    0.3,
+                    0.3,
+                    0.3
+                ],
+                "specular": [
+                    0.5,
+                    0.5,
+                    0.5
+                ],
+                "n": 10.000002,
+                "shaderType": 3,
+                "alpha": 1
+            },
+            "type": "cube",
+            "position": [
+                -1,
+                0,
+                4
+            ],
+            "scale": [
+                2,
+                1,
+                1
+            ],
+            "diffuseTexture": "default.jpg",
+            "normalTexture": "defaultNorm.jpg",
+            "rotation": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "parent": null,
+            "model": null
+        },
+        {
+            "name": "myWallN3",
+            "material": {
+                "diffuse": [
+                    0.5882,
+                    0.5882,
+                    0.5882
+                ],
+                "ambient": [
+                    0.3,
+                    0.3,
+                    0.3
+                ],
+                "specular": [
+                    0.5,
+                    0.5,
+                    0.5
+                ],
+                "n": 10.000002,
+                "shaderType": 3,
+                "alpha": 1
+            },
+            "type": "cube",
+            "position": [
+                0,
+                0,
+                4
+            ],
+            "scale": [
+                2,
+                1,
+                1
+            ],
+            "diffuseTexture": "default.jpg",
+            "normalTexture": "defaultNorm.jpg",
+            "rotation": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "parent": null,
+            "model": null
+        },
+        {
+            "name": "myWallN4",
+            "material": {
+                "diffuse": [
+                    0.5882,
+                    0.5882,
+                    0.5882
+                ],
+                "ambient": [
+                    0.3,
+                    0.3,
+                    0.3
+                ],
+                "specular": [
+                    0.5,
+                    0.5,
+                    0.5
+                ],
+                "n": 10.000002,
+                "shaderType": 3,
+                "alpha": 1
+            },
+            "type": "cube",
+            "position": [
+                1,
+                0,
+                4
+            ],
+            "scale": [
+                2,
+                1,
+                1
+            ],
+            "diffuseTexture": "default.jpg",
+            "normalTexture": "defaultNorm.jpg",
+            "rotation": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "parent": null,
+            "model": null
+        },
+        {
+            "name": "myWallN5",
+            "material": {
+                "diffuse": [
+                    0.5882,
+                    0.5882,
+                    0.5882
+                ],
+                "ambient": [
+                    0.3,
+                    0.3,
+                    0.3
+                ],
+                "specular": [
+                    0.5,
+                    0.5,
+                    0.5
+                ],
+                "n": 10.000002,
+                "shaderType": 3,
+                "alpha": 1
+            },
+            "type": "cube",
+            "position": [
+                2,
+                0,
+                4
+            ],
+            "scale": [
+                2,
+                1,
+                1
+            ],
+            "diffuseTexture": "default.jpg",
+            "normalTexture": "defaultNorm.jpg",
+            "rotation": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "parent": null,
+            "model": null
+        },
+        {
+            "name": "myWallN6",
+            "material": {
+                "diffuse": [
+                    0.5882,
+                    0.5882,
+                    0.5882
+                ],
+                "ambient": [
+                    0.3,
+                    0.3,
+                    0.3
+                ],
+                "specular": [
+                    0.5,
+                    0.5,
+                    0.5
+                ],
+                "n": 10.000002,
+                "shaderType": 3,
+                "alpha": 1
+            },
+            "type": "cube",
+            "position": [
+                3,
+                0,
+                4
+            ],
+            "scale": [
+                2,
+                1,
+                1
+            ],
+            "diffuseTexture": "default.jpg",
+            "normalTexture": "defaultNorm.jpg",
+            "rotation": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "parent": null,
+            "model": null
+        },
+        {
+            "name": "myWallW1",
+            "material": {
+                "diffuse": [
+                    0.5882,
+                    0.5882,
+                    0.5882
+                ],
+                "ambient": [
+                    0.3,
+                    0.3,
+                    0.3
+                ],
+                "specular": [
+                    0.5,
+                    0.5,
+                    0.5
+                ],
+                "n": 10.000002,
+                "shaderType": 3,
+                "alpha": 1
+            },
+            "type": "cube",
+            "position": [
+                4,
+                0,
+                3
+            ],
+            "scale": [
+                1,
+                1,
+                2
+            ],
+            "diffuseTexture": "default.jpg",
+            "normalTexture": "defaultNorm.jpg",
+            "rotation": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "parent": null,
+            "model": null
+        },
+        {
+            "name": "myWallN7",
+            "material": {
+                "diffuse": [
+                    0.5882,
+                    0.5882,
+                    0.5882
+                ],
+                "ambient": [
+                    0.3,
+                    0.3,
+                    0.3
+                ],
+                "specular": [
+                    0.5,
+                    0.5,
+                    0.5
+                ],
+                "n": 10.000002,
+                "shaderType": 3,
+                "alpha": 1
+            },
+            "type": "cube",
+            "position": [
+                4,
+                0,
+                4
+            ],
+            "scale": [
+                2,
+                1,
+                1
+            ],
+            "diffuseTexture": "default.jpg",
+            "normalTexture": "defaultNorm.jpg",
+            "rotation": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "parent": null,
+            "model": null
+        },
+        {
+            "name": "myWallW2",
+            "material": {
+                "diffuse": [
+                    0.5882,
+                    0.5882,
+                    0.5882
+                ],
+                "ambient": [
+                    0.3,
+                    0.3,
+                    0.3
+                ],
+                "specular": [
+                    0.5,
+                    0.5,
+                    0.5
+                ],
+                "n": 10.000002,
+                "shaderType": 3,
+                "alpha": 1
+            },
+            "type": "cube",
+            "position": [
+                4,
+                0,
+                2
+            ],
+            "scale": [
+                1,
+                1,
+                2
+            ],
+            "diffuseTexture": "default.jpg",
+            "normalTexture": "defaultNorm.jpg",
+            "rotation": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "parent": null,
+            "model": null
+        },
+        {
+            "name": "myWallW3",
+            "material": {
+                "diffuse": [
+                    0.5882,
+                    0.5882,
+                    0.5882
+                ],
+                "ambient": [
+                    0.3,
+                    0.3,
+                    0.3
+                ],
+                "specular": [
+                    0.5,
+                    0.5,
+                    0.5
+                ],
+                "n": 10.000002,
+                "shaderType": 3,
+                "alpha": 1
+            },
+            "type": "cube",
+            "position": [
+                4,
+                0,
+                1
+            ],
+            "scale": [
+                1,
+                1,
+                2
+            ],
+            "diffuseTexture": "default.jpg",
+            "normalTexture": "defaultNorm.jpg",
+            "rotation": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "parent": null,
+            "model": null
+        },
+        {
+            "name": "myWallW4",
+            "material": {
+                "diffuse": [
+                    0.5882,
+                    0.5882,
+                    0.5882
+                ],
+                "ambient": [
+                    0.3,
+                    0.3,
+                    0.3
+                ],
+                "specular": [
+                    0.5,
+                    0.5,
+                    0.5
+                ],
+                "n": 10.000002,
+                "shaderType": 3,
+                "alpha": 1
+            },
+            "type": "cube",
+            "position": [
+                4,
                 0,
                 0
             ],
-            "camera": {
-                "name": "mainCamera",
-                "position": [
-                    -0.4751114249229431,
-                    7.563798904418945,
-                    -8.340710639953613
+            "scale": [
+                1,
+                1,
+                2
+            ],
+            "diffuseTexture": "default.jpg",
+            "normalTexture": "defaultNorm.jpg",
+            "rotation": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "parent": null,
+            "model": null
+        },
+        {
+            "name": "myWallW5",
+            "material": {
+                "diffuse": [
+                    0.5882,
+                    0.5882,
+                    0.5882
                 ],
-                "front": [
-                    0.021637719250598823,
-                    -0.6320292986493249,
-                    0.7746423528019075
+                "ambient": [
+                    0.3,
+                    0.3,
+                    0.3
                 ],
-                "up": [
-                    0,
-                    1,
-                    0
+                "specular": [
+                    0.5,
+                    0.5,
+                    0.5
                 ],
-                "pitch": -39.200000000000884,
-                "yaw": 88.39999999999993,
-                "roll": 0,
-                "moveSpeed": 10,
-                "move": false,
-                "canvasFocused": false,
-                "rateX": 0,
-                "rateY": 0,
-                "keyboard": {
-                    "s": false,
-                    "a": false,
-                    "w": false,
-                    "W": false,
-                    "d": false,
-                    "Process": false
-                },
-                "viewMatrix": {
-                    "0": -0.9996101260185242,
-                    "1": 0.017647283151745796,
-                    "2": -0.021637702360749245,
-                    "3": 0,
-                    "4": 0,
-                    "5": 0.7749444246292114,
-                    "6": 0.6320293545722961,
-                    "7": 0,
-                    "8": 0.02792161889374256,
-                    "9": 0.6317829489707947,
-                    "10": -0.774642288684845,
-                    "11": 0,
-                    "12": -0.24204003810882568,
-                    "13": -0.5836204290390015,
-                    "14": -11.251890182495117,
-                    "15": 1
-                },
-                "sensitivity": 0.4
-            }
+                "n": 10.000002,
+                "shaderType": 3,
+                "alpha": 1
+            },
+            "type": "cube",
+            "position": [
+                4,
+                0,
+                -1
+            ],
+            "scale": [
+                1,
+                1,
+                2
+            ],
+            "diffuseTexture": "default.jpg",
+            "normalTexture": "defaultNorm.jpg",
+            "rotation": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "parent": null,
+            "model": null
+        },
+        {
+            "name": "myWallW6",
+            "material": {
+                "diffuse": [
+                    0.5882,
+                    0.5882,
+                    0.5882
+                ],
+                "ambient": [
+                    0.3,
+                    0.3,
+                    0.3
+                ],
+                "specular": [
+                    0.5,
+                    0.5,
+                    0.5
+                ],
+                "n": 10.000002,
+                "shaderType": 3,
+                "alpha": 1
+            },
+            "type": "cube",
+            "position": [
+                4,
+                0,
+                -2.5
+            ],
+            "scale": [
+                1,
+                1,
+                2
+            ],
+            "diffuseTexture": "default.jpg",
+            "normalTexture": "defaultNorm.jpg",
+            "rotation": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "parent": null,
+            "model": null
+        }
+    ],
+    "pointLights": [{
+        "name": "pointLight1",
+        "colour": [
+            1,
+            1,
+            1
+        ],
+        "position": [
+            0,
+            5,
+            0
+        ],
+        "strength": 2,
+        "quadratic": 0.035,
+        "linear": 0.09,
+        "constant": 1,
+        "nearPlane": 0.5,
+        "farPlane": 100,
+        "shadow": 0
+    }],
+    "settings": {
+        "backgroundColor": [
+            0,
+            0,
+            0
+        ],
+        "camera": {
+            "name": "mainCamera",
+            "position": [
+                -0.4751114249229431,
+                7.563798904418945,
+                -8.340710639953613
+            ],
+            "front": [
+                0.021637719250598823,
+                -0.6320292986493249,
+                0.7746423528019075
+            ],
+            "up": [
+                0,
+                1,
+                0
+            ],
+            "pitch": -39.200000000000884,
+            "yaw": 88.39999999999993,
+            "roll": 0,
+            "moveSpeed": 10,
+            "move": false,
+            "canvasFocused": false,
+            "rateX": 0,
+            "rateY": 0,
+            "keyboard": {
+                "s": false,
+                "a": false,
+                "w": false,
+                "W": false,
+                "d": false,
+                "Process": false
+            },
+            "viewMatrix": {
+                "0": -0.9996101260185242,
+                "1": 0.017647283151745796,
+                "2": -0.021637702360749245,
+                "3": 0,
+                "4": 0,
+                "5": 0.7749444246292114,
+                "6": 0.6320293545722961,
+                "7": 0,
+                "8": 0.02792161889374256,
+                "9": 0.6317829489707947,
+                "10": -0.774642288684845,
+                "11": 0,
+                "12": -0.24204003810882568,
+                "13": -0.5836204290390015,
+                "14": -11.251890182495117,
+                "15": 1
+            },
+            "sensitivity": 0.4
         }
     }
-]
+}]
