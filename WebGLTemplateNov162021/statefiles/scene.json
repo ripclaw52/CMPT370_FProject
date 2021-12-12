@@ -6,14 +6,14 @@
                 "ambient": [0.3, 0.3, 0.3],
                 "specular": [0.5, 0.5, 0.5],
                 "n": 10.000002,
-                "shaderType": 3,
+                "shaderType": 4,
                 "alpha": 0.05
             },
             "type": "plane",
             "position": [0, -0.55, 0],
             "scale": [16, 1, 16],
-            "diffuseTexture": "3px-tile.png",
-            "normalTexture": "defaultNorm.jpg",
+            "diffuseTexture": "default.jpg",
+            "normalTexture": "defaultNorm.png",
             "rotation": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
             "parent": null,
             "model": null
