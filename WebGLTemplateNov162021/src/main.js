@@ -141,8 +141,8 @@ async function main() {
                 vec3 normVector = texture(uNormalTexture, oUV).xyz;
                 normVector = 2.0 * normVector - 1.0;
 
-                //float uNormalScale = 5.0;
-                //normVector = uNormalScale * normVector;
+                float uNormalScale = 5.0;
+                normVector = uNormalScale * normVector;
 
                 vec3 biTangent = cross(normal, oTangent);
                 mat3 TBN = mat3(oTangent, biTangent, normal);
